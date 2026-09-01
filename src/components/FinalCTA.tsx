@@ -1,157 +1,82 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
 import { WhatsAppIconFlat } from "./WhatsAppIcon";
-import ctaVideo from "@/assets/IMG/cta-video.mp4.asset.json";
 import { FloatingParticles } from "./FloatingParticles";
+// Se quiser usar o vídeo, pode, mas um fundo clean escuro com partículas já passa um tom premium.
+import ctaVideo from "@/assets/IMG/cta-video.mp4.asset.json";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-/* ── Título em uma linha com palavras gradativas ── */
-const AnimatedTitle = ({ inView }: { inView: boolean }) => {
-  const words = ["Pronto", "para", "transformar", "sua"];
-
-  return (
-    <h2
-      className="font-display font-black tracking-tighter text-center"
-      style={{
-        fontSize:   "clamp(1.5rem, 5vw, 3.5rem)", // Aumentando um pouco a fonte
-        lineHeight: 1.2,
-      }}
-    >
-      {/* Palavras normais */}
-      {words.map((word, i) => (
-        <motion.span
-          key={word}
-          initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-          animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-          transition={{ duration: 0.55, ease, delay: 0.1 + i * 0.11 }}
-          style={{ color: "hsl(0,0%,92%)", display: "inline-block", marginRight: "0.35em" }}
-        >
-          {word}
-        </motion.span>
-      ))}
-      {/* “presênca digital” em gradiente */}
-      <motion.span
-        initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
-        animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-        transition={{ duration: 0.7, ease, delay: 0.52 }}
-        style={{
-          background:           "linear-gradient(90deg, hsl(162,100%,42%), hsl(210,100%,60%), hsl(28,100%,55%))",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor:  "transparent",
-          backgroundClip:       "text",
-          filter:               "drop-shadow(0 0 18px hsla(162,100%,42%,0.55))",
-          display:              "inline-block",
-          marginRight:          "0.1em",
-        }}
-      >
-        presença digital
-      </motion.span>
-      <motion.span
-        initial={{ opacity: 0, scale: 0.3 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.4, ease, delay: 0.82 }}
-        style={{ color: "hsl(162,100%,55%)", display: "inline-block", fontWeight: 900 }}
-      >
-        ?
-      </motion.span>
-    </h2>
-  );
-};
-
-/* ── Parágrafo com fade gradativo por trecho ── */
-const AnimatedParagraph = ({ inView }: { inView: boolean }) => {
-  const chunks = [
-    "Se sua marca precisa de um site ",
-    "à altura do que entrega, ",
-    "a Camaly pode criar uma experiência digital ",
-    "realmente memorável.",
-  ];
-
-  return (
-    <p className="mt-7 text-lg leading-relaxed max-w-xl mx-auto text-center">
-      {chunks.map((chunk, i) => (
-        <motion.span
-          key={i}
-          initial={{ opacity: 0, x: i % 2 === 0 ? -12 : 12 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, ease, delay: 0.9 + i * 0.18 }}
-          style={{
-            color:   i === 3 ? "hsl(162,100%,65%)" : "hsl(200,15%,60%)",
-            fontWeight: i === 3 ? 700 : 400,
-            display: "inline",
-          }}
-        >
-          {chunk}
-        </motion.span>
-      ))}
-    </p>
-  );
-};
-
-
 export const FinalCTA = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const inView     = useInView(sectionRef, { once: false, margin: "-80px" });
+  const inView     = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="contato" ref={sectionRef} className="relative py-32 md:py-44 overflow-hidden">
-      {/* Vídeo de fundo */}
-      <video
-        autoPlay muted loop playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        src={ctaVideo.url}
-      />
+    <section id="contato" ref={sectionRef} className="relative py-32 md:py-48 overflow-hidden bg-background">
+      {/* Vídeo de fundo - opcional, muito escurecido para não roubar a atenção */}
+      <div className="absolute inset-0 opacity-20 mix-blend-screen pointer-events-none">
+        <video
+          autoPlay muted loop playsInline
+          className="w-full h-full object-cover"
+          src={ctaVideo.url}
+        />
+      </div>
 
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-background/72" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/80" />
+      {/* Overlays e Gradientes */}
+      <div className="absolute inset-0 bg-background/90" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsla(162,100%,42%,0.08)_0%,transparent_70%)] pointer-events-none" />
 
-      <FloatingParticles count={25} />
+      <FloatingParticles count={20} />
 
-      {/* Glow central respirando */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-        animate={{ scale: [1, 1.35, 1], opacity: [0.25, 0.55, 0.25] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background: "radial-gradient(circle, hsla(162,100%,42%,0.22) 0%, transparent 70%)",
-          filter:     "blur(20px)",
-        }}
-      />
-
-      <div className="relative z-10 container mx-auto px-6 md:px-12 text-center max-w-3xl">
-
-        {/* Título palavra por palavra */}
-        <AnimatedTitle inView={inView} />
-
-        {/* Parágrafo gradativo por trecho */}
-        <AnimatedParagraph inView={inView} />
-
-        {/* Botão CTA — pulsa em scale, sem anéis */}
+      <div className="relative z-10 container mx-auto px-6 md:px-12 text-center max-w-4xl">
+        
         <motion.div
-          className="mt-12 flex justify-center"
-          initial={{ opacity: 0, scale: 0.85 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.55, ease, delay: 1.62 }}
+          transition={{ duration: 0.6, ease }}
+          className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center mx-auto mb-10 text-primary"
         >
-          <motion.a
+          <ArrowRight className="w-8 h-8 rotate-90 md:rotate-0" strokeWidth={1.5} />
+        </motion.div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease, delay: 0.1 }}
+          className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tighter text-foreground leading-tight"
+        >
+          Seu próximo projeto começa <span className="text-primary italic font-light">aqui.</span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease, delay: 0.2 }}
+          className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
+        >
+          Se sua marca precisa de um site à altura do que entrega, a Camaly cria a experiência digital memorável que vai te separar da concorrência.
+        </motion.p>
+
+        <motion.div
+          className="mt-14 flex justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease, delay: 0.3 }}
+        >
+          <a
             href="https://wa.me/5500000000000"
             target="_blank"
             rel="noopener noreferrer"
-            animate={{ scale: [1, 1.06, 1] }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-            className="px-12 py-5 rounded-xl font-display font-bold text-xl flex items-center gap-3"
-            style={{
-              background: "linear-gradient(135deg, hsl(162,100%,38%), hsl(162,100%,26%))",
-              color:      "#000",
-              boxShadow:  "0 0 36px hsla(162,100%,42%,0.50), 0 4px 24px hsla(0,0%,0%,0.4)",
-            }}
-            whileHover={{ scale: 1.1 }}
+            className="group relative px-8 py-4 rounded-xl bg-foreground text-background font-display font-medium text-lg flex items-center gap-3 overflow-hidden transition-transform hover:scale-105 active:scale-95"
           >
-            <WhatsAppIconFlat size={26} />
-            Fale conosco
-          </motion.a>
+            <div className="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+            
+            <div className="relative z-10 flex items-center gap-3">
+              <WhatsAppIconFlat size={24} />
+              Iniciar Projeto
+            </div>
+          </a>
         </motion.div>
       </div>
     </section>

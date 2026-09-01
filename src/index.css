@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -6,31 +6,31 @@
 
 @layer base {
   :root {
-    --background: 210 33% 3%;
-    --foreground: 0 0% 95%;
-    --card: 205 40% 7%;
-    --card-foreground: 0 0% 95%;
-    --popover: 205 40% 7%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 162 100% 42%;
-    --primary-foreground: 210 33% 3%;
-    --secondary: 195 40% 10%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 205 30% 12%;
-    --muted-foreground: 200 10% 55%;
-    --accent: 172 82% 50%;
-    --accent-foreground: 210 33% 3%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 95%;
-    --border: 200 20% 15%;
-    --input: 200 20% 15%;
-    --ring: 162 100% 42%;
+    --background: 180 17% 2%;
+    --foreground: 150 14% 96%;
+    --card: 165 15% 5%;
+    --card-foreground: 150 14% 96%;
+    --popover: 168 15% 6%;
+    --popover-foreground: 150 14% 96%;
+    --primary: 162 100% 47%;
+    --primary-foreground: 180 17% 2%;
+    --secondary: 180 16% 4%;
+    --secondary-foreground: 153 8% 73%;
+    --muted: 160 8% 16%;
+    --muted-foreground: 162 4% 51%;
+    --accent: 162 100% 47%;
+    --accent-foreground: 180 17% 2%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 150 14% 96%;
+    --border: 160 8% 16%;
+    --input: 160 8% 16%;
+    --ring: 162 100% 47%;
     --radius: 0.75rem;
 
-    --surface: 200 45% 8%;
-    --surface-foreground: 0 0% 95%;
-    --glow-primary: 0 0 20px hsla(162, 100%, 42%, 0.3);
-    --glow-accent: 0 0 30px hsla(172, 82%, 50%, 0.2);
+    --surface: 168 15% 6%;
+    --surface-foreground: 150 14% 96%;
+    --glow-primary: 0 0 16px hsla(162, 100%, 47%, 0.1);
+    --glow-accent: 0 0 24px hsla(162, 100%, 47%, 0.08);
   }
 }
 

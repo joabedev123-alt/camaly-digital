@@ -4,10 +4,8 @@ import { Menu, X } from "lucide-react";
 import { WhatsAppIconFlat } from "./WhatsAppIcon";
 
 const menuItems = [
-  { label: "Início", href: "#inicio" },
-  { label: "Serviços", href: "#servicos" },
   { label: "Projetos", href: "#projetos" },
-  { label: "Diferenciais", href: "#diferenciais" },
+  { label: "Serviços", href: "#servicos" },
   { label: "Processo", href: "#processo" },
   { label: "Sobre", href: "#sobre" },
   { label: "Contato", href: "#contato" },
@@ -17,59 +15,48 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [visible, setVisible] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-      
-      // Define se está no topo para o estilo glass/transparente
-      setScrolled(currentScrollPos > 50);
-
-      // Lógica de visibilidade: 
-      // Mostra se estiver rolando para cima ou se estiver no topo (threshold de 10px)
-      // Esconde se estiver rolando para baixo e já passou do cabeçalho
-      const isVisible = prevScrollPos > currentScrollPos || currentScrollPos < 10;
-      
-      setVisible(isVisible);
-      setPrevScrollPos(currentScrollPos);
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos]);
+  }, []);
 
   return (
     <>
       <motion.header
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: visible || mobileOpen ? 0 : -120, opacity: visible || mobileOpen ? 1 : 0 }}
-        transition={{ duration: 0.5, ease }}
-        className={`fixed top-0 left-0 right-0 z-50 h-20 md:h-28 px-4 md:px-12 flex items-center justify-between transition-all duration-500 ${
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease }}
+        className={`fixed top-0 left-0 right-0 z-50 h-[72px] md:h-[80px] px-6 md:px-12 flex items-center justify-between transition-all duration-500 ${
           scrolled
-            ? "glass"
-            : "bg-transparent"
+            ? "bg-background/70 backdrop-blur-md border-b border-white/[0.04]"
+            : "bg-transparent border-b border-transparent"
         }`}
       >
-        <a href="#inicio" className="flex items-center">
+        <a href="#inicio" className="flex items-center gap-3">
           <img
             src="/Logo frente 03-Photoroom.png"
             alt="Camaly Digital"
-            className="h-11 sm:h-14 md:h-20 w-auto object-contain"
+            className="h-10 sm:h-12 w-auto object-contain"
           />
+          <span className="font-display font-bold text-foreground text-xl tracking-tight hidden sm:block">
+            CAMALY
+          </span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav className="hidden lg:flex items-center gap-8">
           {menuItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="relative text-lg text-muted-foreground hover:text-foreground transition-colors duration-300 group font-medium"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 tracking-wide"
             >
               {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
@@ -79,17 +66,16 @@ export const Header = () => {
             href="https://wa.me/5500000000000"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-primary text-primary-foreground font-display text-base font-semibold glow-primary hover:scale-105 transition-transform duration-200"
+            className="hidden md:flex items-center justify-center h-11 px-6 rounded-lg bg-primary text-primary-foreground font-display text-sm font-semibold hover:bg-primary/90 transition-colors"
           >
-            <WhatsAppIconFlat size={22} className="text-primary-foreground" />
-            WhatsApp
+            INICIAR PROJETO ↗
           </a>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-foreground"
+            className="lg:hidden text-foreground flex items-center justify-center h-11 w-11 rounded-full bg-white/5 border border-white/10"
             aria-label="Abrir menu"
           >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </motion.header>
@@ -101,31 +87,33 @@ export const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease }}
-            className="fixed inset-0 z-40 pt-20 glass"
+            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl flex flex-col justify-center px-6"
           >
-            <nav className="flex flex-col items-center gap-6 pt-12">
+            <nav className="flex flex-col gap-8">
               {menuItems.map((item, i) => (
                 <motion.a
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05, duration: 0.4, ease }}
-                  className="text-xl font-display text-foreground hover:text-primary transition-colors"
+                  className="text-3xl font-display font-semibold text-foreground hover:text-primary transition-colors"
                 >
                   {item.label}
                 </motion.a>
               ))}
-              <a
+              <motion.a
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3, duration: 0.4, ease }}
                 href="https://wa.me/5500000000000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 flex items-center gap-2.5 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-display font-semibold glow-primary"
+                className="mt-8 flex items-center justify-center h-14 w-full rounded-xl bg-primary text-primary-foreground font-display font-semibold text-lg"
               >
-                <WhatsAppIconFlat size={22} className="text-primary-foreground" />
-                WhatsApp
-              </a>
+                INICIAR PROJETO ↗
+              </motion.a>
             </nav>
           </motion.div>
         )}
