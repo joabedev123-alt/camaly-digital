@@ -1,16 +1,17 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "camaly-digital",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite-node scripts/prerender-meta.ts",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "media": "python scripts/optimize_media.py"
   },
   "dependencies": {
     "@fontsource/geist-sans": "^5.3.0",
@@ -46,6 +47,7 @@
     "@react-three/drei": "^9.120.4",
     "@react-three/fiber": "^8.17.14",
     "@tanstack/react-query": "^5.83.0",
+    "bootstrap-icons": "^1.11.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",

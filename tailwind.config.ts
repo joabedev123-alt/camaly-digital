@@ -14,8 +14,14 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Geist Sans", "sans-serif"],
-        body: ["Inter", "sans-serif"],
+        display: ["Geist Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ["Geist Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
+      screens: {
+        xs: "430px",
+      },
+      transitionTimingFunction: {
+        premium: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -52,14 +58,26 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         surface: {
-          DEFAULT: "hsl(var(--surface))",
+          DEFAULT: "rgb(var(--rgb-surface) / <alpha-value>)",
+          hover: "rgb(var(--rgb-surface-hover) / <alpha-value>)",
           foreground: "hsl(var(--surface-foreground))",
         },
+        brand: {
+          DEFAULT: "rgb(var(--rgb-brand) / <alpha-value>)",
+          soft: "var(--color-brand-soft)",
+        },
+        ink: {
+          DEFAULT: "rgb(var(--rgb-bg) / <alpha-value>)",
+          soft: "rgb(var(--rgb-bg-soft) / <alpha-value>)",
+        },
+        soft: "rgb(var(--rgb-muted) / <alpha-value>)",
+        line: "var(--color-border)",
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-xl)",
       },
       keyframes: {
         "accordion-down": {

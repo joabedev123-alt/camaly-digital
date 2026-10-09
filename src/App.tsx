@@ -1,29 +1,46 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { CustomCursor } from "@/components/CustomCursor";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import { MotionConfig } from "framer-motion";
+import { Layout } from "@/components/layout/Layout";
+import Home from "./pages/Home";
 
-const queryClient = new QueryClient();
+// Páginas internas carregadas sob demanda (code splitting por rota)
+const Services = lazy(() => import("./pages/Services"));
+const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
+const Portfolio = lazy(() => import("./pages/Portfolio"));
+const Case = lazy(() => import("./pages/Case"));
+const About = lazy(() => import("./pages/About"));
+const Process = lazy(() => import("./pages/Process"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Faq = lazy(() => import("./pages/Faq"));
+const Legal = lazy(() => import("./pages/Legal"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+const PageFallback = () => <div className="min-h-[100svh]" aria-busy="true" />;
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <CustomCursor />
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+  <MotionConfig reducedMotion="user">
+    <BrowserRouter>
+      <Suspense fallback={<PageFallback />}>
         <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="servicos" element={<Services />} />
+            <Route path="servicos/:slug" element={<ServiceDetail />} />
+            <Route path="portfolio" element={<Portfolio />} />
+            <Route path="portfolio/:slug" element={<Case />} />
+            <Route path="sobre" element={<About />} />
+            <Route path="processo" element={<Process />} />
+            <Route path="contato" element={<Contact />} />
+            <Route path="faq" element={<Faq />} />
+            <Route path="privacidade" element={<Legal kind="privacidade" />} />
+            <Route path="termos" element={<Legal kind="termos" />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+      </Suspense>
+    </BrowserRouter>
+  </MotionConfig>
 );
 
 export default App;

@@ -1,24 +1,27 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Seo } from "@/components/system/Seo";
+import { ButtonLink, WhatsAppButton } from "@/components/system/Button";
+import { BrandWatermark } from "@/components/brand/BrandWatermark";
 
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
+const NotFound = () => (
+  <>
+    <Seo title="Página não encontrada" description="A página que você procura não existe ou mudou de endereço." noindex />
+    <section className="relative flex min-h-[90svh] items-center overflow-hidden pt-[var(--header-h)]">
+      <BrandWatermark variant="chameleon" position="center" opacity={0.06} scale={0.9} />
+      <div className="container-x relative z-10 text-center">
+        <p className="font-mono text-[13px] uppercase tracking-[0.3em] text-brand">Erro 404</p>
+        <h1 className="display-1 mx-auto mt-6 max-w-3xl">Até o camaleão se perdeu aqui.</h1>
+        <p className="lead mx-auto mt-6 max-w-lg">A página que você procura não existe ou mudou de endereço.</p>
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <ButtonLink to="/" icon="arrow-right">
+            Voltar ao início
+          </ButtonLink>
+          <WhatsAppButton variant="ghost" context="home">
+            Falar com a Camaly
+          </WhatsAppButton>
+        </div>
       </div>
-    </div>
-  );
-};
+    </section>
+  </>
+);
 
 export default NotFound;
