@@ -14,7 +14,7 @@ export const LogoMarquee = () => {
           <li
             key={i}
             aria-hidden={i >= CLIENT_NAMES.length}
-            className="flex items-center whitespace-nowrap px-7 text-[clamp(18px,1.8vw,24px)] font-semibold uppercase tracking-[0.04em] text-white/35 transition-colors duration-500 hover:text-white/80 sm:px-10"
+            className="flex items-center whitespace-nowrap px-7 text-[clamp(18px,1.8vw,24px)] font-semibold uppercase tracking-[0.04em] text-white/55 transition-colors duration-500 hover:text-white/80 sm:px-10"
           >
             {name}
             <span className="ml-14 h-1.5 w-1.5 rounded-[2px] bg-white/15 sm:ml-20" aria-hidden />

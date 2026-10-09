@@ -5,13 +5,16 @@
  *
  * Executado por `npm run build` via vite-node (lê os mesmos dados do site).
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { allRoutes } from "../src/config/seo";
 import { SITE } from "../src/config/site";
 
 const DIST = join(process.cwd(), "dist");
-const template = readFileSync(join(DIST, "index.html"), "utf-8");
+// Preload das fontes principais (evita troca de fonte tardia e layout shift)
+const fonts = readdirSync(join(DIST, "assets")).filter((f) => /^geist-sans-latin-(400|600)-normal-.*\.woff2$/.test(f));
+const preload = fonts.map((f) => `<link rel="preload" href="/assets/${f}" as="font" type="font/woff2" crossorigin />`).join("\n    ");
+const template = readFileSync(join(DIST, "index.html"), "utf-8").replace("</head>", `  ${preload}\n  </head>`);
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const fullTitle = (t: string) => (t.includes(SITE.name) ? t : `${t} | ${SITE.name}`);

@@ -147,11 +147,11 @@ const Case = () => {
                 <div className="grid gap-px bg-line lg:grid-cols-12">
                   <div className="bg-surface p-5 sm:p-10 lg:col-span-8">
                     <BrowserFrame url={project.url}>
-                      <img src={img.src} srcSet={`${img.srcSm} 800w, ${img.src} 1600w`} sizes="(min-width:1024px) 60vw, 100vw" alt={`${project.name} — tela ${i + 1}`} loading="lazy" className="block w-full" />
+                      <img src={img.src} srcSet={`${img.srcSm} 800w, ${img.src} 1600w`} sizes="(min-width:1024px) 60vw, 100vw" alt={`${project.name} — tela ${i + 1}`} width={1600} height={1000} loading="lazy" className="block h-auto w-full" />
                     </BrowserFrame>
                   </div>
                   <div className="relative overflow-hidden bg-surface lg:col-span-4">
-                    <img src={img.srcSm} alt="" aria-hidden loading="lazy" className="h-64 w-full scale-[2.2] object-cover [object-position:12%_6%] origin-top-left lg:h-full" />
+                    <img src={img.srcSm} alt="" aria-hidden width={800} height={500} loading="lazy" className="h-64 w-full scale-[2.2] object-cover [object-position:12%_6%] origin-top-left lg:h-full" />
                     <span className="absolute bottom-4 left-4 rounded-full bg-ink/80 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-soft backdrop-blur">Close-up</span>
                   </div>
                 </div>

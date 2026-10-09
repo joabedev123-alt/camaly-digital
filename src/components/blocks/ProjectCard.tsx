@@ -5,13 +5,15 @@ import { CATEGORY_LABEL, type Project } from "@/data/projects";
 
 /** Card do portfólio: imagem 16:10, overlay escuro e "View project" no hover. */
 export const ProjectCard = ({ project, className, priority, compact }: { project: Project; className?: string; priority?: boolean; compact?: boolean }) => (
-  <Link to={`/portfolio/${project.slug}`} className={cn("group block", className)} aria-label={`${project.name} — ver case`}>
+  <Link to={`/portfolio/${project.slug}`} className={cn("group block", className)}>
     <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-surface">
       <img
         src={project.cover.srcSm}
         srcSet={`${project.cover.srcSm} 800w, ${project.cover.src} 1600w`}
         sizes="(min-width: 1024px) 50vw, 100vw"
         alt={`${project.name} — ${project.type}`}
+        width={800}
+        height={500}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
         className="h-full w-full object-cover object-top transition-transform duration-[1.2s] ease-premium group-hover:scale-[1.02]"

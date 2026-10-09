@@ -116,7 +116,7 @@ export const LineReveal = ({
       {lines.map((line, i) => (
         <span key={i} className={cn(fluid ? "inline sm:block sm:overflow-hidden" : "block overflow-hidden", "pb-[0.08em] -mb-[0.08em]")}>
           <motion.span
-            className={cn(fluid ? "inline sm:block" : "block", "will-change-transform")}
+            className={cn(fluid ? "inline sm:block" : "block")}
             variants={{
               hidden: { y: "105%", opacity: fluid ? 0 : 1 },
               show: { y: "0%", opacity: 1, transition: { duration: 1, ease: EASE } },
@@ -166,7 +166,11 @@ export const Counter = ({ value, suffix = "", className }: { value: number; suff
   }, [inView, reduce, value]);
 
   return (
-    <span ref={ref} className={cn("tabular", className)} aria-label={`${value}${suffix}`}>
+    <span ref={ref} className={cn("tabular", className)}>
+      <span className="sr-only">
+        {value}
+        {suffix}
+      </span>
       <span aria-hidden>
         {n}
         {suffix}

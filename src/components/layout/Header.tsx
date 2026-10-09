@@ -11,7 +11,7 @@ import { MobileMenu } from "./MobileMenu";
 
 export const Logo = ({ className }: { className?: string }) => (
   <Link to="/" className={cn("flex items-center shrink-0", className)} aria-label="Camaly Digital — página inicial">
-    <img src="/brand/camaly-logo.webp" alt="Camaly Digital" width={560} height={193} className="h-8 w-auto lg:h-9" />
+    <img src="/brand/camaly-logo-sm.webp" alt="Camaly Digital" width={280} height={96} className="h-8 w-auto lg:h-9" />
   </Link>
 );
 

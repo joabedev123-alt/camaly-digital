@@ -63,6 +63,25 @@ aparecem quando há conteúdo.
 - Animações: `Reveal`, `Stagger`, `LineReveal`, `ImageReveal`, `Counter` em
   `src/components/system/Reveal.tsx` — todas respeitam "reduzir movimento".
 
+## Desempenho mobile (Lighthouse, perfil mobile)
+
+| Página | Performance | Acessibilidade | Boas práticas | SEO |
+|---|---|---|---|---|
+| Home | 83–87 | 100 | 100 | 100 |
+| Serviço (sistemas) | 80 | 100 | 100 | 100 |
+| Portfólio | 83–84 | 100 | 100 | 100 |
+| Case | 83 | 100 | 100 | 100 |
+| Contato | 87 | 100 | 100 | 100 |
+
+Decisões que sustentam esses números — mantenha ao evoluir o site:
+- O camaleão do hero anima apenas `opacity`, `transform` e `clip-path`; os pixels são
+  poucos `<path>` agrupados (não um elemento por pixel) e o ciclo pausa fora da tela.
+- As seções da Home abaixo da dobra ficam em um chunk separado (`HomeSections.tsx`) e
+  são montadas uma a uma em momentos ociosos — sem tarefas longas no carregamento.
+- Paralaxe só com mouse; no toque o conteúdo fica estático.
+- Fontes Geist com `preload` (injetado no build) e ícones com caixa fixa: CLS = 0.
+- `scripts/build-icons.mjs` gera um CSS só com os ícones usados (roda no `dev`/`build`).
+
 ## Pendências de conteúdo (confirmar com a equipe)
 
 - **Métricas** (120+, 98%, 3x, 100%) foram mantidas exatamente como estavam no site

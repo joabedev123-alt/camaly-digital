@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "media": "python scripts/optimize_media.py"
+    "media": "python scripts/optimize_media.py",
+    "predev": "node scripts/build-icons.mjs",
+    "prebuild": "node scripts/build-icons.mjs"
   },
   "dependencies": {
     "@fontsource/geist-sans": "^5.3.0",

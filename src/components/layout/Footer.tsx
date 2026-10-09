@@ -18,11 +18,11 @@ export const Footer = () => (
     <div className="container-x relative z-10">
       <div className="grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <img src="/brand/camaly-logo.webp" alt="Camaly Digital" width={560} height={193} loading="lazy" className="h-10 w-auto" />
+          <img src="/brand/camaly-logo-sm.webp" alt="Camaly Digital" width={280} height={96} loading="lazy" className="h-10 w-auto" />
           <p className="mt-6 max-w-sm text-[17px] leading-relaxed text-soft">
             Estratégia, design e tecnologia para transformar ideias e negócios em produtos digitais.
           </p>
-          <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.24em] text-soft/70">Entender · Adaptar · Construir · Evoluir</p>
+          <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.24em] text-soft">Entender · Adaptar · Construir · Evoluir</p>
         </div>
 
         <nav aria-label="Serviços" className="lg:col-span-3">

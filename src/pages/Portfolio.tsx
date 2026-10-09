@@ -44,6 +44,7 @@ const Portfolio = () => (
       }
     />
     <Section className="!pt-0">
+      <h2 className="sr-only">Todos os projetos</h2>
       <ProjectGrid />
     </Section>
     <CTASection title={["Gostou do que viu?", "O próximo pode ser o seu."]} context="portfolio" button="Falar sobre meu projeto" />

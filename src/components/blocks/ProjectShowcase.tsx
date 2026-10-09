@@ -15,7 +15,8 @@ export const ProjectShowcase = ({ project, index, layout }: { project: Project; 
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [40, -40]);
+  const still = reduce || (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches);
+  const y = useTransform(scrollYProgress, [0, 1], still ? [0, 0] : [40, -40]);
 
   const media = (
     <motion.div style={{ y }} className="relative">

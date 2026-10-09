@@ -35,7 +35,7 @@
     --radius-lg: 22px;
     --radius-xl: 32px;
 
-    --space-section: clamp(88px, 12vw, 168px);
+    --space-section: clamp(72px, 12vw, 168px);
 
     --font-heading: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
     --font-body: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
@@ -114,6 +114,11 @@
     color: var(--color-bg);
   }
 
+  a, button, summary, label, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-brand);
     outline-offset: 3px;
@@ -121,6 +126,20 @@
   }
 
   img, video { max-width: 100%; }
+
+  /* Ícones com caixa fixa: nada se mexe quando a fonte de ícones carrega */
+  .bi {
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .bi::before {
+    display: block;
+    width: 1em;
+    height: 1em;
+    vertical-align: 0;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -346,26 +365,22 @@
 .animate-marquee { animation: marquee 60s linear infinite; }
 .marquee:hover .animate-marquee { animation-play-state: paused; }
 
-@keyframes pixel-in {
-  0% { opacity: 0; transform: scale(0.2); }
-  60% { opacity: 1; }
-  100% { opacity: var(--o, 0.55); transform: scale(1); }
+@keyframes hc-sweep {
+  from { clip-path: inset(0 0 0 100%); }
+  to { clip-path: inset(0 0 0 0); }
 }
 
-@keyframes twinkle {
-  0%, 100% { opacity: var(--o, 0.4); }
-  50% { opacity: calc(var(--o, 0.4) * 0.25); }
+@keyframes fade-in {
+  to { opacity: 1; }
+}
+
+@keyframes eye-pulse {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(3); opacity: 0; }
 }
 
 @keyframes draw {
   to { stroke-dashoffset: 0; }
-}
-
-@keyframes scan {
-  0% { transform: translateX(-30%); opacity: 0; }
-  15% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { transform: translateX(130%); opacity: 0; }
 }
 
 @keyframes float-soft {

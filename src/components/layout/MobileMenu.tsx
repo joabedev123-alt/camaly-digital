@@ -42,7 +42,7 @@ export const MobileMenu = ({ open, onClose }: { open: boolean; onClose: () => vo
           <BrandWatermark variant="wire" position="bottom-right" opacity={0.06} scale={1.3} />
 
           <div className="container-x flex items-center justify-between" style={{ height: "var(--header-h)" }}>
-            <img src="/brand/camaly-logo.webp" alt="Camaly Digital" className="h-8 w-auto" />
+            <img src="/brand/camaly-logo-sm.webp" alt="Camaly Digital" className="h-8 w-auto" />
             <button
               ref={closeRef}
               type="button"

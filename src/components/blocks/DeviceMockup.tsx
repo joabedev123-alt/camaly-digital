@@ -10,6 +10,8 @@ const Img = ({ image, alt, eager, className }: { image: ProjectImage; alt: strin
     srcSet={`${image.srcSm} 800w, ${image.src} 1600w`}
     sizes={sizes}
     alt={alt}
+    width={1600}
+    height={1000}
     loading={eager ? "eager" : "lazy"}
     decoding="async"
     fetchPriority={eager ? "high" : undefined}
@@ -97,7 +99,7 @@ export const DeviceMockup = ({
         </div>
         <div className="absolute bottom-[8%] right-[5%] w-[38%] overflow-hidden rounded-[12px] border border-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.9)] transition-transform duration-[1.4s] ease-premium group-hover:translate-y-1">
           <div className="aspect-[4/3]">
-            <img src={image.srcSm} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover [object-position:30%_8%] scale-[1.9] origin-top-left" />
+            <img src={image.srcSm} alt="" aria-hidden width={800} height={500} loading="lazy" className="h-full w-full object-cover [object-position:30%_8%] scale-[1.9] origin-top-left" />
           </div>
         </div>
       </div>
