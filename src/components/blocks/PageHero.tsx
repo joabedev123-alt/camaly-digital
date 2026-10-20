@@ -38,7 +38,7 @@ export const PageHero = ({
           <Reveal>
             <Eyebrow>{eyebrow}</Eyebrow>
           </Reveal>
-          <LineReveal as="h1" immediate fluid className="display-1 mt-7 max-w-[15ch]" delay={0.1}>
+          <LineReveal as="h1" immediate fluid className="display-1 mt-7 max-w-none sm:max-w-[15ch]" delay={0.1}>
             {title}
           </LineReveal>
           {lead && (

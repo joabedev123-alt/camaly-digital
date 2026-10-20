@@ -200,10 +200,10 @@ const Case = () => {
 
       {/* Próximo projeto */}
       <section aria-label="Próximo projeto" className="border-t border-line">
-        <Link to={`/portfolio/${next.slug}`} className="group container-x flex items-center justify-between gap-8 py-14 lg:py-20">
-          <div>
+        <Link to={`/portfolio/${next.slug}`} className="group container-x flex flex-col items-start gap-6 py-14 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:py-20">
+          <div className="min-w-0">
             <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-soft">Next project</p>
-            <p className="mt-4 text-[clamp(32px,5vw,72px)] font-semibold leading-none tracking-[-0.04em] transition-colors duration-500 group-hover:text-brand">{next.name}</p>
+            <p className="mt-4 break-words text-[clamp(32px,5vw,72px)] font-semibold leading-none tracking-[-0.04em] transition-colors duration-500 group-hover:text-brand">{next.name}</p>
           </div>
           <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full border border-line text-2xl transition-all duration-700 ease-premium group-hover:rotate-45 group-hover:border-brand group-hover:bg-brand group-hover:text-ink lg:h-24 lg:w-24">
             <Icon name="arrow-up-right" />

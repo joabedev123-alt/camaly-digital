@@ -37,7 +37,7 @@ const BLOCKS = [
             <p>Seu site precisa explicar o que você faz, apresentar seus diferenciais, provar sua capacidade e transformar interesse em contato.</p>
           </Reveal>
         </div>
-        <Stagger className="-mx-[var(--gutter)] flex snap-x snap-mandatory gap-3 overflow-x-auto px-[var(--gutter)] pb-2 scrollbar-hide sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 lg:col-span-7">
+        <Stagger className="-mx-[var(--gutter)] flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain px-[var(--gutter)] pb-2 scrollbar-hide sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:overscroll-auto sm:px-0 sm:pb-0 lg:col-span-7">
           {PROBLEMS.map((p) => (
             <StaggerItem key={p.n} className="spotlight surface flex w-[78vw] max-w-[320px] shrink-0 snap-start flex-col p-6 sm:w-auto sm:max-w-none sm:p-7">
               <div className="flex items-center justify-between">
@@ -100,11 +100,11 @@ const BLOCKS = [
             </p>
             <p>Assim como o camaleão entende o ambiente antes de se adaptar, a Camaly desenvolve cada solução considerando a realidade do negócio.</p>
           </Reveal>
-          <Stagger className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line lg:col-span-7">
+          <Stagger className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:col-span-7">
             {PILLARS.map((p) => (
-              <StaggerItem key={p.title} className="spotlight flex min-w-0 flex-col bg-ink p-5 sm:p-8">
+              <StaggerItem key={p.title} className="spotlight flex min-w-0 flex-col bg-ink p-6 sm:p-8">
                 <Icon name={p.icon} className="text-2xl text-brand" />
-                <h3 className="mt-8 break-words text-[14px] font-semibold uppercase tracking-[0.02em] sm:text-[18px] sm:tracking-[0.06em]">{p.title}</h3>
+                <h3 className="mt-8 break-words text-[16px] font-semibold uppercase leading-snug tracking-[0.02em] sm:text-[18px] sm:tracking-[0.06em]">{p.title}</h3>
                 <p className="mt-2 text-[14.5px] text-soft">{p.text}</p>
               </StaggerItem>
             ))}

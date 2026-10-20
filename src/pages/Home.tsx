@@ -72,7 +72,7 @@ const Home = () => (
               </a>
             </Reveal>
             <Reveal delay={0.55}>
-              <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-soft">Sites • E-commerce • Landing Pages • Sistemas • Plataformas</p>
+              <p className="mt-8 max-w-md font-mono text-[10px] uppercase leading-relaxed tracking-[0.2em] text-soft text-pretty sm:text-[11px]">Sites • E-commerce • Landing Pages • Sistemas • Plataformas</p>
             </Reveal>
           </div>
 
@@ -91,7 +91,7 @@ const Home = () => (
       <LogoMarquee />
     </section>
 
-    <Suspense fallback={<div className="min-h-[200vh]" aria-hidden />}>
+    <Suspense fallback={<div className="min-h-[120vh] md:min-h-[200vh]" aria-hidden />}>
       <HomeSections />
     </Suspense>
   </>

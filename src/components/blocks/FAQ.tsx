@@ -24,12 +24,12 @@ export const FAQ = ({ items, defaultOpen = 0 }: { items: FaqItem[]; defaultOpen?
                 aria-expanded={isOpen}
                 aria-controls={panel}
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="group flex w-full items-center justify-between gap-6 py-6 text-left sm:py-7"
+                className="group flex w-full items-start justify-between gap-4 py-6 text-left sm:items-center sm:gap-6 sm:py-7"
               >
-                <span className={cn("text-[18px] font-medium tracking-tight transition-colors sm:text-[21px]", isOpen ? "text-brand" : "group-hover:text-foreground")}>{item.q}</span>
+                <span className={cn("min-w-0 flex-1 pr-2 text-[18px] font-medium tracking-tight transition-colors sm:text-[21px]", isOpen ? "text-brand" : "group-hover:text-foreground")}>{item.q}</span>
                 <span
                   className={cn(
-                    "grid h-10 w-10 shrink-0 place-items-center rounded-full border transition-all duration-500 ease-premium",
+                    "grid h-11 w-11 shrink-0 place-items-center rounded-full border transition-all duration-500 ease-premium",
                     isOpen ? "rotate-45 border-brand bg-brand text-ink" : "border-line text-soft group-hover:border-white/25",
                   )}
                 >

@@ -107,7 +107,7 @@ const ServiceDetail = () => {
       </Section>
 
       {/* Entregas */}
-      <Section tone="soft" id="entregas" labelledBy="del-t" className="scroll-mt-24">
+      <Section tone="soft" id="entregas" labelledBy="del-t" className="scroll-mt-[calc(var(--header-h)+1rem)]">
         <SectionHeader id="del-t" eyebrow={isSystems ? "Possibilidades" : "Entregas"} title={[service.deliverables.title]} />
         <Stagger className="mt-14 cells grid sm:grid-cols-2 lg:grid-cols-3">
           {service.deliverables.items.map((d) => (

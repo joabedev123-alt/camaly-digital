@@ -35,11 +35,11 @@ const Process = () => (
       title={["Um bom projeto começa", <span className="text-brand">muito antes do primeiro pixel.</span>]}
       lead={<p>Oito fases, cada uma com um objetivo claro. Você sabe o que está acontecendo, o que vem a seguir e quando sua participação é necessária.</p>}
       aside={
-        <ol className="grid grid-cols-4 gap-px overflow-hidden rounded-lg border border-line bg-line">
+        <ol className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-4">
           {PROCESS_FULL.map((p) => (
-            <li key={p.n} className="flex aspect-square flex-col justify-between bg-ink p-3 sm:p-4">
+            <li key={p.n} className="flex min-h-[88px] flex-col justify-between bg-ink p-4 sm:aspect-square sm:min-h-0">
               <Icon name={p.icon} className="text-lg text-brand" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-soft sm:text-[11px]">{p.n}</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-soft">{p.n}</span>
             </li>
           ))}
         </ol>

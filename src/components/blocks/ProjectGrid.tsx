@@ -43,7 +43,7 @@ export const ProjectGrid = () => {
   return (
     <div>
       <div className="flex flex-col gap-5 border-b border-line pb-6 lg:flex-row lg:items-center lg:justify-between">
-        <div role="group" aria-label="Filtrar por tipo de projeto" className="-mx-[var(--gutter)] flex gap-2 overflow-x-auto px-[var(--gutter)] scrollbar-hide lg:mx-0 lg:px-0">
+        <div role="group" aria-label="Filtrar por tipo de projeto" className="-mx-[var(--gutter)] flex snap-x snap-mandatory gap-2 overflow-x-auto overscroll-x-contain px-[var(--gutter)] scrollbar-hide lg:mx-0 lg:snap-none lg:overflow-visible lg:px-0">
           {CATEGORY_FILTERS.map((f) => {
             const active = tipo === f.id;
             const n = counts[f.id] ?? 0;
@@ -55,7 +55,7 @@ export const ProjectGrid = () => {
                 aria-pressed={active}
                 onClick={() => update({ tipo: f.id === "todos" ? null : f.id, n: null })}
                 className={cn(
-                  "flex shrink-0 items-center gap-2 rounded-full border px-4 py-2.5 text-[14px] font-medium transition-colors duration-300",
+                  "flex min-h-11 shrink-0 snap-start items-center gap-2 rounded-full border px-4 py-2.5 text-[14px] font-medium transition-colors duration-300",
                   active ? "border-brand bg-brand text-ink" : "border-line text-soft hover:border-white/20 hover:text-foreground",
                 )}
               >

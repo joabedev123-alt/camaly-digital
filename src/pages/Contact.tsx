@@ -210,7 +210,7 @@ const Contact = () => {
                     <p className="flex items-center gap-2 text-[13px] text-soft">
                       <Icon name="shield-check" className="text-brand" /> Seus dados são usados apenas para o contato.
                     </p>
-                    <button type="submit" className="btn btn-primary btn-lg">
+                    <button type="submit" className="btn btn-primary btn-lg w-full sm:w-auto">
                       <span>Enviar projeto</span> <Icon name="arrow-up-right" />
                     </button>
                   </div>

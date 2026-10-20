@@ -118,10 +118,10 @@ const About = () => (
       <SectionHeader id="think-t" eyebrow="Nossa forma de pensar" title={["Princípios que guiam", "cada projeto."]} />
       <ol className="mt-16 border-t border-line">
         {PRINCIPLES.map((p, i) => (
-          <Reveal as="li" key={p.n} delay={i * 0.05} className="group grid grid-cols-[auto_1fr_auto] items-center gap-6 border-b border-line py-7 sm:gap-10 sm:py-9">
+          <Reveal as="li" key={p.n} delay={i * 0.05} className="group grid grid-cols-[auto_1fr] items-center gap-6 border-b border-line py-7 sm:grid-cols-[auto_1fr_auto] sm:gap-10 sm:py-9">
             <span className="font-mono text-[13px] tracking-[0.2em] text-brand">{p.n}</span>
-            <span className="text-[clamp(26px,4vw,56px)] font-semibold leading-none tracking-[-0.04em] transition-transform duration-700 ease-premium group-hover:translate-x-2">{p.title}</span>
-            <Icon name="arrow-right" className="text-xl text-soft opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <span className="min-w-0 break-words text-[clamp(26px,4vw,56px)] font-semibold leading-none tracking-[-0.04em] transition-transform duration-700 ease-premium group-hover:translate-x-2">{p.title}</span>
+            <Icon name="arrow-right" className="hidden text-xl text-soft opacity-0 transition-opacity duration-500 group-hover:opacity-100 sm:block" />
           </Reveal>
         ))}
       </ol>

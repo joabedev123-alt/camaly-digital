@@ -33,16 +33,16 @@ const Services = () => (
 
     {/* Índice rápido */}
     <nav aria-label="Serviços" className="sticky top-[var(--header-h)] z-30 border-y border-line bg-ink/85 backdrop-blur-xl">
-      <ul className="container-x flex gap-2 overflow-x-auto py-3 scrollbar-hide">
+      <ul className="container-x flex snap-x snap-mandatory gap-2 overflow-x-auto overscroll-x-contain py-3 scrollbar-hide lg:snap-none">
         {SERVICES.map((s) => (
-          <li key={s.slug} className="shrink-0">
-            <a href={`#${s.slug}`} className="flex items-center gap-2 rounded-full px-4 py-2 text-[14px] text-soft transition-colors hover:bg-surface hover:text-foreground">
+          <li key={s.slug} className="shrink-0 snap-start">
+            <a href={`#${s.slug}`} className="flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-[14px] text-soft transition-colors hover:bg-surface hover:text-foreground">
               <Icon name={s.icon} className="text-brand" /> {s.name}
             </a>
           </li>
         ))}
-        <li className="shrink-0">
-          <a href="#capacidades" className="flex items-center gap-2 rounded-full px-4 py-2 text-[14px] text-soft transition-colors hover:bg-surface hover:text-foreground">
+        <li className="shrink-0 snap-start">
+          <a href="#capacidades" className="flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-[14px] text-soft transition-colors hover:bg-surface hover:text-foreground">
             <Icon name="stars" className="text-brand" /> UI/UX & mais
           </a>
         </li>
@@ -52,7 +52,7 @@ const Services = () => (
     {SERVICES.map((s, i) => {
       const related = projectsByCategory(...s.projectCategories).slice(0, 3);
       return (
-        <section key={s.slug} id={s.slug} aria-labelledby={`${s.slug}-t`} className={`section scroll-mt-32 ${i % 2 ? "bg-ink-soft" : ""}`}>
+        <section key={s.slug} id={s.slug} aria-labelledby={`${s.slug}-t`} className={`section scroll-mt-[calc(var(--header-h)+3.5rem)] ${i % 2 ? "bg-ink-soft" : ""}`}>
           <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <Reveal className="flex items-center gap-4">
@@ -104,7 +104,7 @@ const Services = () => (
               {related.length > 0 && (
                 <Reveal className="mt-10">
                   <p className="text-[12px] uppercase tracking-[0.2em] text-soft">Exemplos reais</p>
-                  <ul className="mt-5 grid grid-cols-3 gap-3">
+                  <ul className="mt-5 grid gap-4 sm:grid-cols-3 sm:gap-3">
                     {related.map((p) => (
                       <li key={p.slug}>
                         <Link to={`/portfolio/${p.slug}`} className="group block">

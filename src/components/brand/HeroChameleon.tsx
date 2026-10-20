@@ -121,13 +121,13 @@ export const HeroChameleon = ({ className }: { className?: string }) => {
       <motion.div style={{ rotateX: rx, rotateY: ry, transformPerspective: 1200 }} className="relative">
         {/* Chip de modo — o camaleão se adapta ao tipo de produto */}
         <div className="relative z-10 mb-2 flex justify-center sm:absolute sm:left-[8%] sm:top-[2%] sm:mb-0 sm:block">
-          <div className="flex items-center gap-3 rounded-full border border-white/10 bg-ink/80 py-1.5 pl-1.5 pr-4 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.8)]">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-primary/10 text-brand">
+          <div className="mx-auto flex w-full max-w-sm items-center gap-3 rounded-full border border-white/10 bg-ink/80 py-1.5 pl-1.5 pr-4 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.8)] sm:mx-0 sm:w-auto sm:max-w-none">
+            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary/10 text-brand">
               <Icon name={current.icon} />
             </span>
-            <span className="text-[11px] uppercase tracking-[0.18em] text-soft">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-soft sm:text-[11px]">
               Adaptando para{" "}
-              <span className="relative inline-block min-w-[9.5em] text-foreground">
+              <span className="relative inline-block min-w-0 text-foreground sm:min-w-[9.5em]">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.span
                     key={current.label}

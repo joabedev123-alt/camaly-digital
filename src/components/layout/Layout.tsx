@@ -50,7 +50,7 @@ export const Layout = () => {
       <ScrollProgress />
       <RouteScroll />
       <Header />
-      <main id="conteudo" tabIndex={-1} className="outline-none">
+      <main id="conteudo" tabIndex={-1} className="outline-none pb-[calc(4.75rem+env(safe-area-inset-bottom))] md:pb-0">
         <Outlet />
       </main>
       <Footer />

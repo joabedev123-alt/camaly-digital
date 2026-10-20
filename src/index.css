@@ -35,7 +35,7 @@
     --radius-lg: 22px;
     --radius-xl: 32px;
 
-    --space-section: clamp(72px, 12vw, 168px);
+    --space-section: clamp(56px, 10vw, 168px);
 
     --font-heading: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
     --font-body: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
@@ -187,13 +187,13 @@
   }
 
   .display-1 {
-    font-size: clamp(42px, 7.4vw, 104px);
+    font-size: clamp(36px, 7.4vw, 104px);
     font-weight: 600;
     line-height: 0.98;
     letter-spacing: -0.045em;
   }
   .display-2 {
-    font-size: clamp(36px, 5.6vw, 72px);
+    font-size: clamp(32px, 5.6vw, 72px);
     font-weight: 600;
     line-height: 1.02;
     letter-spacing: -0.04em;

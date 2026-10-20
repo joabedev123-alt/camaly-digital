@@ -120,11 +120,11 @@ export const MobileMenu = ({ open, onClose }: { open: boolean; onClose: () => vo
               <WhatsAppButton size="lg" className="w-full" context="home">
                 Falar sobre meu projeto
               </WhatsAppButton>
-              <div className="flex items-center justify-center gap-6 text-sm text-soft">
-                <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <div className="flex flex-col items-stretch gap-4 text-sm text-soft sm:flex-row sm:items-center sm:justify-center sm:gap-6">
+                <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center justify-center gap-2">
                   <Icon name="instagram" /> @{CONTACT.instagram}
                 </a>
-                <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2">
+                <a href={`mailto:${CONTACT.email}`} className="flex min-h-11 items-center justify-center gap-2">
                   <Icon name="envelope" /> E-mail
                 </a>
               </div>
