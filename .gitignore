@@ -25,3 +25,4 @@ dist-ssr
 
 # Builds/pacotes gerados
 build_hostinger*.zip
+.vercel

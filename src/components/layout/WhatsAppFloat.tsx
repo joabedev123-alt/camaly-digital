@@ -76,7 +76,7 @@ export const WhatsAppFloat = () => {
             <span className="pointer-events-none mr-3 translate-x-2 rounded-full border border-line bg-surface/95 px-4 py-2 text-[13px] font-medium opacity-0 shadow-xl backdrop-blur transition-all duration-500 ease-premium group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100">
               Fale com a Camaly
             </span>
-            <span className="relative grid h-14 w-14 place-items-center rounded-full border border-primary/30 bg-ink text-brand shadow-[0_10px_40px_-10px_rgba(0,240,168,0.5)] transition-colors duration-500 group-hover:bg-brand group-hover:text-ink">
+            <span className="relative grid h-14 w-14 place-items-center rounded-full border border-primary/30 bg-surface text-brand shadow-[0_12px_36px_-10px_rgba(0,196,138,0.45)] transition-colors duration-500 group-hover:bg-brand group-hover:text-onbrand">
               <span className="absolute inset-0 rounded-full border border-primary/40 animate-ping [animation-duration:2.8s]" aria-hidden />
               <Icon name="whatsapp" className="text-[22px]" />
             </span>

@@ -1,51 +1,49 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "@/components/system/Icon";
-import { Reveal } from "@/components/system/Reveal";
-import { cn } from "@/lib/utils";
+import { Card, CardContent } from "@/components/ui/card";
+import { Marquee } from "@/components/ui/3d-testimonials";
 import { VIDEO_TESTIMONIALS, type VideoTestimonial } from "@/data/content";
 import { getProject } from "@/data/projects";
 
 const labelFor = (t: VideoTestimonial) => {
   const project = t.project ? getProject(t.project) : undefined;
   return {
-    title: t.name ?? (project ? `Cliente ${project.name}` : "Cliente Camaly"),
-    meta: [t.company, t.projectType ?? project?.type].filter(Boolean).join(" · ") || "Depoimento em vídeo",
+    title: t.name ?? (project ? project.name : "Cliente Camaly"),
+    meta: t.projectType ?? project?.type ?? "Depoimento",
     project,
   };
 };
 
-const PosterButton = ({ t, onOpen, size }: { t: VideoTestimonial; onOpen: () => void; size: "lg" | "sm" }) => {
+function splitColumns<T>(items: T[], columns: number): T[][] {
+  const cols: T[][] = Array.from({ length: columns }, () => []);
+  items.forEach((item, i) => cols[i % columns].push(item));
+  return cols;
+}
+
+const VideoCard = ({ t, onOpen }: { t: VideoTestimonial; onOpen: () => void }) => {
   const { title, meta } = labelFor(t);
   return (
-    <button
-      type="button"
-      onClick={onOpen}
-      className={cn(
-        "group relative block w-full overflow-hidden rounded-lg border border-line bg-surface text-left",
-        size === "lg" ? "aspect-[4/5] sm:aspect-[9/12]" : "aspect-[9/14]",
-      )}
-      aria-label={`Assistir depoimento: ${title}`}
-    >
-      <img src={t.poster} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-premium group-hover:scale-[1.04]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
-      <span
-        className={cn(
-          "absolute left-1/2 top-1/2 grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/25 bg-ink/50 backdrop-blur-md transition-all duration-700 ease-premium group-hover:scale-110 group-hover:border-brand group-hover:bg-brand group-hover:text-ink",
-          size === "lg" ? "h-20 w-20 text-3xl" : "h-14 w-14 text-xl",
-        )}
-      >
-        <Icon name="play-fill" className="translate-x-[2px]" />
-      </span>
-      <span className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-        <span className={cn("block font-semibold tracking-tight", size === "lg" ? "text-[22px]" : "text-[16px]")}>{title}</span>
-        <span className="mt-1 block text-[13px] text-soft">{meta}</span>
-      </span>
+    <button type="button" onClick={onOpen} aria-label={`Assistir depoimento: ${title}`} className="block w-full text-left">
+      <Card className="overflow-hidden border-line bg-surface shadow-[0_14px_36px_-28px_rgba(15,27,24,0.3)] transition-transform duration-500 ease-premium active:scale-[0.98] sm:hover:-translate-y-1">
+        <CardContent className="p-0">
+          <div className="relative aspect-[9/13] overflow-hidden">
+            <img src={t.poster} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+            <span className="absolute left-1/2 top-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/25 bg-black/40 text-white backdrop-blur-md sm:h-11 sm:w-11">
+              <Icon name="play-fill" className="translate-x-[1px] text-base sm:text-lg" />
+            </span>
+            <span className="absolute inset-x-0 bottom-0 space-y-0.5 p-2 sm:p-3">
+              <span className="block truncate text-[11px] font-semibold leading-snug tracking-tight text-white sm:text-[13px]">{title}</span>
+              <span className="block truncate text-[10px] leading-snug text-white/65 sm:text-[11px]">{meta}</span>
+            </span>
+          </div>
+        </CardContent>
+      </Card>
     </button>
   );
 };
 
-/** Modal nativo (<dialog>): foco preso, Esc fecha, sem dependências. */
 const VideoModal = ({ item, onClose }: { item: VideoTestimonial | null; onClose: () => void }) => {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -62,27 +60,27 @@ const VideoModal = ({ item, onClose }: { item: VideoTestimonial | null; onClose:
       onClose={onClose}
       onClick={(e) => e.target === e.currentTarget && onClose()}
       aria-labelledby="video-modal-title"
-      className="w-[min(92vw,440px)] overflow-hidden rounded-lg border border-line bg-ink p-0 text-foreground shadow-2xl backdrop:bg-ink/85 backdrop:backdrop-blur-sm"
+      className="m-auto w-[min(92vw,440px)] overflow-hidden rounded-lg border border-line bg-ink p-0 text-foreground shadow-2xl backdrop:bg-black/55 backdrop:backdrop-blur-sm"
     >
       {item && info && (
         <>
           <div className="relative">
-            <video key={item.src} src={item.src} poster={item.poster} controls autoPlay playsInline preload="metadata" className="aspect-[9/16] max-h-[78vh] w-full bg-black object-contain" />
+            <video key={item.src} src={item.src} poster={item.poster} controls autoPlay playsInline preload="metadata" className="aspect-[9/16] max-h-[70vh] w-full bg-black object-contain sm:max-h-[78vh]" />
             <button
               type="button"
               onClick={onClose}
               aria-label="Fechar vídeo"
-              className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-ink/70 backdrop-blur"
+              className="absolute right-3 top-3 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur"
             >
               <Icon name="x-lg" />
             </button>
           </div>
-          <div className="flex items-center justify-between gap-4 p-5">
-            <div>
+          <div className="flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+            <div className="min-w-0">
               <p id="video-modal-title" className="text-[17px] font-semibold tracking-tight">
                 {info.title}
               </p>
-              <p className="text-[13px] text-soft">{info.meta}</p>
+              <p className="mt-1 text-[13px] text-soft">{info.meta}</p>
             </div>
             {info.project && (
               <Link to={`/portfolio/${info.project.slug}`} onClick={onClose} className="link-arrow shrink-0 text-[14px]">
@@ -97,36 +95,40 @@ const VideoModal = ({ item, onClose }: { item: VideoTestimonial | null; onClose:
 };
 
 /**
- * Depoimentos reais em vídeo: um principal grande + secundários.
- * Os vídeos só carregam ao abrir o modal (nada de autoplay no mobile).
+ * Fileiras verticais 2D: 2 no mobile, 3 a partir de md.
  */
 export const Testimonials = () => {
   const [open, setOpen] = useState<VideoTestimonial | null>(null);
-  const [main, ...rest] = VIDEO_TESTIMONIALS;
+  const colsMobile = useMemo(() => splitColumns(VIDEO_TESTIMONIALS, 2), []);
+  const colsDesktop = useMemo(() => splitColumns(VIDEO_TESTIMONIALS, 3), []);
+
+  const renderCols = (cols: VideoTestimonial[][]) =>
+    cols.map((col, i) => (
+      <Marquee
+        key={i}
+        vertical
+        pauseOnHover
+        reverse={i % 2 === 1}
+        repeat={3}
+        className="h-full min-h-0 p-0 [--duration:40s] [--gap:0.65rem] sm:[--duration:46s] sm:[--gap:0.85rem]"
+        ariaLabel={`Fileira vertical de depoimentos ${i + 1}`}
+      >
+        {col.map((t) => (
+          <VideoCard key={t.id} t={t} onOpen={() => setOpen(t)} />
+        ))}
+      </Marquee>
+    ));
 
   return (
     <>
-      <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
-        <Reveal className="lg:col-span-5">
-          <PosterButton t={main} size="lg" onOpen={() => setOpen(main)} />
-        </Reveal>
+      <div className="relative h-[26rem] overflow-hidden rounded-xl border border-line bg-surface/80 xs:h-[28rem] sm:h-[34rem] md:h-[36rem]">
+        {/* Mobile / tablet fino: 2 fileiras */}
+        <div className="grid h-full grid-cols-2 gap-2 px-2 py-2.5 md:hidden">{renderCols(colsMobile)}</div>
+        {/* Desktop: 3 fileiras */}
+        <div className="hidden h-full grid-cols-3 gap-4 px-4 py-4 md:grid">{renderCols(colsDesktop)}</div>
 
-        <div className="flex flex-col gap-6 lg:col-span-7 lg:gap-8">
-          <Reveal delay={0.1} className="surface flex flex-1 flex-col justify-between p-7 sm:p-10">
-            <Icon name="quote" className="text-5xl text-brand/80" />
-            <p className="mt-6 text-[clamp(22px,2.4vw,32px)] font-medium leading-snug tracking-tight">
-              Depoimentos gravados pelos próprios clientes, sem roteiro — sobre a experiência de construir um projeto com a Camaly.
-            </p>
-            <p className="mt-6 text-[14px] text-soft">Toque em um vídeo para assistir com áudio.</p>
-          </Reveal>
-          <div className="grid grid-cols-2 gap-6 lg:gap-8">
-            {rest.map((t, i) => (
-              <Reveal key={t.id} delay={0.15 + i * 0.08}>
-                <PosterButton t={t} size="sm" onOpen={() => setOpen(t)} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-surface sm:h-16 md:h-20" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-surface sm:h-16 md:h-20" />
       </div>
 
       <VideoModal item={open} onClose={() => setOpen(null)} />

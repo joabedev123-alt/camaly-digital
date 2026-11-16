@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Sitemaps — Google Search Console
+# Principal (índice): https://camaly.com.br/sitemap.xml
 Sitemap: https://camaly.com.br/sitemap.xml
+Sitemap: https://camaly.com.br/sitemap-all.xml
+Sitemap: https://camaly.com.br/sitemap-pages.xml
+Sitemap: https://camaly.com.br/sitemap-services.xml
+Sitemap: https://camaly.com.br/sitemap-portfolio.xml

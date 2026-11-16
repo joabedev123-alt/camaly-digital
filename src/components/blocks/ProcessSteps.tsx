@@ -9,7 +9,7 @@ export const ProcessTimeline = ({ steps }: { steps: ProcessPhase[] }) => (
   <ol className="relative grid gap-0 md:grid-cols-3 lg:grid-cols-6">
     {steps.map((s, i) => (
       <Reveal as="li" key={s.n} delay={i * 0.07} className="group relative border-l border-line pb-10 pl-8 md:border-l-0 md:border-t md:pb-0 md:pl-0 md:pr-6 md:pt-8">
-        <span className="absolute -left-[5px] top-1 h-[9px] w-[9px] rounded-full border border-brand bg-ink transition-colors duration-500 group-hover:bg-brand md:-top-[5px] md:left-0" />
+        <span className="absolute -left-[5px] top-1 h-[9px] w-[9px] rounded-full border border-brand bg-surface transition-colors duration-500 group-hover:bg-brand md:-top-[5px] md:left-0" />
         <span className="font-mono text-[12px] tracking-[0.2em] text-brand">{s.n}</span>
         <h3 className="mt-3 text-[19px] font-semibold uppercase tracking-tight">{s.title}</h3>
         <p className="mt-3 text-[15px] leading-relaxed text-soft">{s.short}</p>
@@ -30,7 +30,7 @@ export const ProcessPhases = ({ phases }: { phases: ProcessPhase[] }) => {
       <motion.span aria-hidden style={{ scaleY }} className="absolute left-[27px] top-2 bottom-2 w-px origin-top bg-brand md:left-[39px]" />
       {phases.map((p, i) => (
         <li key={p.n} className="relative grid gap-6 pb-16 pl-20 md:grid-cols-12 md:gap-12 md:pb-24 md:pl-28 last:pb-0">
-          <span className="absolute left-0 top-0 grid h-14 w-14 place-items-center rounded-full border border-line bg-ink text-xl text-brand md:h-20 md:w-20 md:text-2xl">
+          <span className="absolute left-0 top-0 grid h-14 w-14 place-items-center rounded-full border border-line bg-surface text-xl text-brand md:h-20 md:w-20 md:text-2xl">
             <Icon name={p.icon} />
           </span>
           <Reveal className="md:col-span-7">
@@ -42,7 +42,7 @@ export const ProcessPhases = ({ phases }: { phases: ProcessPhase[] }) => {
           </Reveal>
           <Reveal delay={0.1} className="md:col-span-5">
             <div className="surface relative overflow-hidden p-6">
-              <span aria-hidden className="pointer-events-none absolute -right-3 -top-8 select-none text-[120px] font-semibold leading-none tracking-[-0.06em] text-white/[0.04]">
+              <span aria-hidden className="pointer-events-none absolute -right-3 -top-8 select-none text-[120px] font-semibold leading-none tracking-[-0.06em] text-foreground/[0.05]">
                 {p.n}
               </span>
               <p className="text-[12px] uppercase tracking-[0.2em] text-soft">Nesta fase</p>
@@ -56,7 +56,7 @@ export const ProcessPhases = ({ phases }: { phases: ProcessPhase[] }) => {
               {/* Pequena representação visual: barra de progresso da fase */}
               <div className="mt-6 flex gap-1" aria-hidden>
                 {phases.map((_, j) => (
-                  <span key={j} className={`h-1 flex-1 rounded-full ${j <= i ? "bg-brand" : "bg-white/10"}`} />
+                  <span key={j} className={`h-1 flex-1 rounded-full ${j <= i ? "bg-brand" : "bg-foreground/10"}`} />
                 ))}
               </div>
             </div>

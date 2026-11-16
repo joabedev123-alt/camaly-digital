@@ -23,9 +23,9 @@ export const PageHero = ({
   watermark?: "wire" | "chameleon" | "camaly" | "none";
 }) => (
   <section className="relative overflow-hidden pb-[clamp(64px,9vw,120px)] pt-[calc(var(--header-h)+clamp(48px,8vw,112px))]">
-    <div aria-hidden className="absolute inset-0 bg-grid opacity-70 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_0%,#000,transparent_75%)]" />
-    <div aria-hidden className="absolute -top-40 right-[-10%] h-[520px] w-[720px] rounded-full bg-[radial-gradient(closest-side,rgba(0,240,168,0.10),transparent)]" />
-    {watermark !== "none" && <BrandWatermark variant={watermark} position="top-right" opacity={0.05} scale={watermark === "camaly" ? 0.9 : 0.62} className="top-24" />}
+    <div aria-hidden className="atmosphere" />
+    <div aria-hidden className="absolute inset-0 bg-grid opacity-60 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_0%,#000,transparent_75%)]" />
+    {watermark !== "none" && <BrandWatermark variant={watermark} position="top-right" opacity={0.045} scale={watermark === "camaly" ? 0.9 : 0.62} className="top-24" />}
 
     <div className="container-x relative z-10">
       {breadcrumb && (

@@ -37,7 +37,7 @@ const Process = () => (
       aside={
         <ol className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-4">
           {PROCESS_FULL.map((p) => (
-            <li key={p.n} className="flex min-h-[88px] flex-col justify-between bg-ink p-4 sm:aspect-square sm:min-h-0">
+            <li key={p.n} className="flex min-h-[88px] flex-col justify-between bg-surface p-4 sm:aspect-square sm:min-h-0">
               <Icon name={p.icon} className="text-lg text-brand" />
               <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-soft">{p.n}</span>
             </li>

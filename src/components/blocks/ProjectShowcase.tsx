@@ -22,7 +22,7 @@ export const ProjectShowcase = ({ project, index, layout }: { project: Project; 
     <motion.div style={{ y }} className="relative">
       <Link to={`/portfolio/${project.slug}`} className="group block overflow-hidden rounded-xl border border-line" tabIndex={-1} aria-hidden>
         <DeviceMockup image={project.cover} alt="" url={project.url} composition={project.composition} />
-        <span className="absolute right-5 top-5 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-ink/70 text-lg opacity-0 backdrop-blur transition-all duration-700 ease-premium group-hover:opacity-100 group-hover:rotate-45">
+        <span className="absolute right-5 top-5 grid h-12 w-12 place-items-center rounded-full border border-white/20 bg-black/65 text-lg text-white opacity-0 backdrop-blur transition-all duration-700 ease-premium group-hover:opacity-100 group-hover:rotate-45">
           <Icon name="arrow-up-right" />
         </span>
       </Link>

@@ -102,7 +102,7 @@ const BLOCKS = [
           </Reveal>
           <Stagger className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:col-span-7">
             {PILLARS.map((p) => (
-              <StaggerItem key={p.title} className="spotlight flex min-w-0 flex-col bg-ink p-6 sm:p-8">
+              <StaggerItem key={p.title} className="spotlight flex min-w-0 flex-col bg-surface p-6 sm:p-8">
                 <Icon name={p.icon} className="text-2xl text-brand" />
                 <h3 className="mt-8 break-words text-[16px] font-semibold uppercase leading-snug tracking-[0.02em] sm:text-[18px] sm:tracking-[0.06em]">{p.title}</h3>
                 <p className="mt-2 text-[14.5px] text-soft">{p.text}</p>
@@ -230,8 +230,14 @@ const BLOCKS = [
   <Fragment key={8}>
     {/* ═══ DEPOIMENTOS ════════════════════════════════════════ */}
     <Section tone="soft" labelledBy="test-title">
-      <SectionHeader id="test-title" eyebrow="Depoimentos" title={["Quem trabalha com a Camaly", "entende a diferença."]} />
-      <div className="mt-16">
+      <SectionHeader
+        id="test-title"
+        align="split"
+        eyebrow="Depoimentos"
+        title={["Quem trabalha com a Camaly", "entende a diferença."]}
+        lead="Depoimentos gravados pelos próprios clientes, sem roteiro — sobre a experiência de construir um projeto com a Camaly."
+      />
+      <div className="mt-14 lg:mt-16">
         <Testimonials />
       </div>
     </Section>
@@ -257,10 +263,11 @@ const BLOCKS = [
   </Fragment>,
   <Fragment key={10}>
     {/* ═══ PROVOCAÇÃO + CTA ═══════════════════════════════════ */}
-    <section aria-label="Não espere sua empresa ficar para trás" className="border-t border-line bg-ink-soft py-16 lg:py-20">
-      <div className="container-x grid gap-6 lg:grid-cols-12 lg:items-center">
+    <section aria-label="Não espere sua empresa ficar para trás" className="relative overflow-hidden border-t border-line bg-ink-soft py-16 lg:py-20">
+      <div aria-hidden className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(closest-side,rgba(31,168,186,0.12),transparent)]" />
+      <div className="container-x relative z-10 grid gap-6 lg:grid-cols-12 lg:items-center">
         <Reveal className="lg:col-span-5">
-          <p className="text-[13px] font-medium uppercase tracking-[0.22em] text-brand">Não espere sua empresa ficar para trás.</p>
+          <p className="text-[13px] font-medium uppercase tracking-[0.22em] text-cyan">Não espere sua empresa ficar para trás.</p>
         </Reveal>
         <Reveal delay={0.1} className="lg:col-span-7">
           <p className="text-[clamp(22px,2.4vw,30px)] font-medium leading-snug tracking-tight">

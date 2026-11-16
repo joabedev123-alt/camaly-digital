@@ -54,14 +54,14 @@ export const Header = () => {
 
   return (
     <>
-      <a href="#conteudo" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-brand focus:px-5 focus:py-3 focus:text-ink">
+      <a href="#conteudo" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-brand focus:px-5 focus:py-3 focus:text-onbrand">
         Pular para o conteúdo
       </a>
 
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ease-premium border-b",
-          solid ? "bg-ink/75 backdrop-blur-xl border-line" : "bg-transparent border-transparent",
+          solid ? "bg-ink/85 backdrop-blur-xl border-line shadow-[0_10px_40px_-24px_rgba(11,22,20,0.25)]" : "bg-transparent border-transparent",
         )}
         onMouseLeave={closeMega}
       >
@@ -119,7 +119,7 @@ export const Header = () => {
             <button
               type="button"
               onClick={() => setMobileOpen(true)}
-              className="lg:hidden grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-foreground"
+              className="lg:hidden grid h-11 w-11 place-items-center rounded-full border border-line bg-ink-soft text-foreground"
               aria-label="Abrir menu"
               aria-expanded={mobileOpen}
               aria-controls="menu-mobile"
@@ -139,7 +139,7 @@ export const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35, ease: EASE }}
-              className="absolute inset-x-0 top-full hidden lg:block border-b border-line bg-ink shadow-[0_40px_80px_-20px_rgba(0,0,0,0.85)]"
+              className="absolute inset-x-0 top-full hidden lg:block border-b border-line bg-surface shadow-[0_40px_80px_-24px_rgba(15,27,24,0.2)]"
             >
               <div className="container-x grid grid-cols-12 gap-8 py-10">
                 <div className="col-span-3 flex flex-col justify-between">
@@ -201,7 +201,7 @@ export const Header = () => {
         {megaOpen && (
           <motion.div
             aria-hidden
-            className="fixed inset-0 z-40 hidden bg-ink/60 backdrop-blur-[2px] lg:block"
+            className="fixed inset-0 z-40 hidden bg-ink-deep/25 backdrop-blur-[2px] lg:block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

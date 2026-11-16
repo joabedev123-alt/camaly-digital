@@ -1,13 +1,13 @@
 /**
  * Pós-build: gera dist/<rota>/index.html com <title>, description, canonical,
- * Open Graph e Twitter próprios de cada página, além de sitemap.xml.
- * Buscadores e redes sociais recebem os metadados corretos sem depender de JS.
+ * Open Graph e Twitter próprios de cada página, além dos sitemaps para o
+ * Google Search Console (índice + páginas / serviços / portfólio).
  *
  * Executado por `npm run build` via vite-node (lê os mesmos dados do site).
  */
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { allRoutes } from "../src/config/seo";
+import { allRoutes, type SitemapRoute } from "../src/config/seo";
 import { SITE } from "../src/config/site";
 
 const DIST = join(process.cwd(), "dist");
@@ -18,11 +18,13 @@ const template = readFileSync(join(DIST, "index.html"), "utf-8").replace("</head
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const fullTitle = (t: string) => (t.includes(SITE.name) ? t : `${t} | ${SITE.name}`);
+const absUrl = (path: string) => SITE.url + (path === "/" ? "/" : path);
 
 const routes = allRoutes();
+const indexable = routes.filter((r) => !r.meta.noindex);
 
 for (const { path, meta } of routes) {
-  const url = SITE.url + (path === "/" ? "/" : path);
+  const url = absUrl(path);
   const title = esc(fullTitle(meta.title));
   const desc = esc(meta.description);
   const img = SITE.url + (meta.image ?? SITE.ogImage);
@@ -53,14 +55,65 @@ for (const { path, meta } of routes) {
 }
 
 const today = new Date().toISOString().slice(0, 10);
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+
+const urlEntry = (r: SitemapRoute) => `  <url>
+    <loc>${absUrl(r.path)}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${r.changefreq}</changefreq>
+    <priority>${r.priority.toFixed(1)}</priority>
+  </url>`;
+
+const writeUrlset = (filename: string, list: SitemapRoute[]) => {
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes
-  .filter((r) => !r.meta.noindex)
-  .map((r) => `  <url><loc>${SITE.url}${r.path === "/" ? "/" : r.path}</loc><lastmod>${today}</lastmod><priority>${r.priority.toFixed(1)}</priority></url>`)
-  .join("\n")}
+${list.map(urlEntry).join("\n")}
 </urlset>
 `;
-writeFileSync(join(DIST, "sitemap.xml"), sitemap);
+  writeFileSync(join(DIST, filename), xml);
+};
 
-console.log(`prerender-meta: ${routes.length} rotas + sitemap.xml`);
+const pages = indexable.filter((r) => r.group === "pages");
+const services = indexable.filter((r) => r.group === "services");
+const portfolio = indexable.filter((r) => r.group === "portfolio");
+
+writeUrlset("sitemap-pages.xml", pages);
+writeUrlset("sitemap-services.xml", services);
+writeUrlset("sitemap-portfolio.xml", portfolio);
+
+/** Índice principal — URL a enviar no Google Search Console. */
+const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${SITE.url}/sitemap-pages.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${SITE.url}/sitemap-services.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${SITE.url}/sitemap-portfolio.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+</sitemapindex>
+`;
+writeFileSync(join(DIST, "sitemap.xml"), sitemapIndex);
+
+/** Sitemap único (todas as URLs) — útil como fallback no GSC. */
+writeUrlset("sitemap-all.xml", indexable);
+
+const robots = `User-agent: *
+Allow: /
+
+# Sitemaps — Google Search Console
+Sitemap: ${SITE.url}/sitemap.xml
+Sitemap: ${SITE.url}/sitemap-all.xml
+Sitemap: ${SITE.url}/sitemap-pages.xml
+Sitemap: ${SITE.url}/sitemap-services.xml
+Sitemap: ${SITE.url}/sitemap-portfolio.xml
+`;
+writeFileSync(join(DIST, "robots.txt"), robots);
+
+console.log(
+  `prerender-meta: ${routes.length} rotas + sitemaps (index, pages ${pages.length}, services ${services.length}, portfolio ${portfolio.length}, all ${indexable.length})`,
+);

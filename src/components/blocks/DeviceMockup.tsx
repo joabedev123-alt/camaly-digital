@@ -21,7 +21,7 @@ const Img = ({ image, alt, eager, className }: { image: ProjectImage; alt: strin
 
 /** Moldura de navegador minimalista. */
 export const BrowserFrame = ({ children, url, className }: { children: ReactNode; url?: string; className?: string }) => (
-  <div className={cn("overflow-hidden rounded-[14px] border border-white/10 bg-[#0d1312] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.9)]", className)}>
+  <div className={cn("overflow-hidden rounded-[14px] border border-black/10 bg-[#0d1312] shadow-[0_28px_80px_-36px_rgba(11,22,20,0.45)]", className)}>
     <div className="flex h-8 items-center gap-3 border-b border-white/[0.06] bg-white/[0.02] px-3.5 sm:h-9">
       <span className="flex gap-1.5" aria-hidden>
         <i className="h-2.5 w-2.5 rounded-full bg-white/15" />
@@ -64,7 +64,7 @@ export const DeviceMockup = ({
     return (
       <div className={cn("relative aspect-[16/10] overflow-hidden", className)}>
         <Img image={image} alt={alt} eager={eager} className="transition-transform duration-[1.6s] ease-premium group-hover:scale-[1.03]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
       </div>
     );
   }

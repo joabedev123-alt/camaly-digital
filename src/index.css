@@ -3,29 +3,39 @@
 @tailwind utilities;
 
 /* ════════════════════════════════════════════════════════════
-   CAMALY — DESIGN TOKENS
+   CAMALY — DESIGN TOKENS (MIST DIGITAL / MEIO-TERMO)
+   Nicho: plataformas, landing pages, e-commerce e sistemas
    ════════════════════════════════════════════════════════════ */
 @layer base {
   :root {
-    /* Paleta Camaly */
-    --color-bg: #050807;
-    --color-bg-soft: #080c0b;
-    --color-surface: #0b1110;
-    --color-surface-hover: #101715;
-    --color-brand: #00f0a8; /* hsl(162 100% 47%) — verde oficial do projeto */
-    --color-brand-soft: rgba(0, 240, 168, 0.12);
-    --color-cyan: #3fd5e6; /* uso pontual */
-    --color-white: #f4f7f6;
-    --color-muted: #8e9995;
-    --color-border: rgba(255, 255, 255, 0.07);
-    --color-border-strong: rgba(255, 255, 255, 0.12);
+    /* Base sage — nem branco clínico, nem dark total */
+    --color-bg: #e4ebe8;
+    --color-bg-soft: #d4dfda;
+    --color-surface: #f3f7f5;
+    --color-surface-hover: #e8f0ec;
+    --color-deep: #14201c; /* faixa de contraste (CTA / footer) */
+    --color-brand: #00c48a;
+    --color-brand-soft: rgba(0, 196, 138, 0.14);
+    --color-brand-bright: #2ae0a8;
+    --color-cyan: #1fa8ba; /* accent tech / produto digital */
+    --color-cyan-soft: rgba(31, 168, 186, 0.12);
+    --color-white: #0f1b18; /* texto principal */
+    --color-muted: #4f635c;
+    --color-border: rgba(15, 27, 24, 0.1);
+    --color-border-strong: rgba(15, 27, 24, 0.17);
+    --color-on-brand: #031610;
+    --color-watermark: #0f1b18;
 
-    --rgb-bg: 5 8 7;
-    --rgb-bg-soft: 8 12 11;
-    --rgb-surface: 11 17 16;
-    --rgb-surface-hover: 16 23 21;
-    --rgb-brand: 0 240 168;
-    --rgb-muted: 142 153 149;
+    --rgb-bg: 228 235 232;
+    --rgb-bg-soft: 212 223 218;
+    --rgb-surface: 243 247 245;
+    --rgb-surface-hover: 232 240 236;
+    --rgb-deep: 20 32 28;
+    --rgb-brand: 0 196 138;
+    --rgb-cyan: 31 168 186;
+    --rgb-muted: 79 99 92;
+    --rgb-onbrand: 3 22 16;
+    --rgb-ink: 15 27 24;
 
     --container: 1320px;
     --gutter: 16px;
@@ -43,29 +53,50 @@
     --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
     --header-h: 72px;
 
-    /* Mapeamento shadcn (componentes em src/components/ui) */
-    --background: 160 23% 3%;
-    --foreground: 160 16% 96%;
-    --card: 170 21% 5%;
-    --card-foreground: 160 16% 96%;
-    --popover: 170 21% 5%;
-    --popover-foreground: 160 16% 96%;
-    --primary: 162 100% 47%;
-    --primary-foreground: 160 23% 3%;
-    --secondary: 165 18% 7%;
-    --secondary-foreground: 160 16% 96%;
-    --muted: 165 18% 7%;
-    --muted-foreground: 158 5% 58%;
-    --accent: 162 100% 47%;
-    --accent-foreground: 160 23% 3%;
-    --destructive: 0 72% 56%;
-    --destructive-foreground: 160 16% 96%;
-    --border: 160 10% 12%;
-    --input: 160 10% 14%;
-    --ring: 162 100% 47%;
+    /* Mapeamento shadcn */
+    --background: 150 14% 91%;
+    --foreground: 160 28% 8%;
+    --card: 150 18% 96%;
+    --card-foreground: 160 28% 8%;
+    --popover: 150 18% 96%;
+    --popover-foreground: 160 28% 8%;
+    --primary: 162 100% 38%;
+    --primary-foreground: 160 40% 5%;
+    --secondary: 150 12% 86%;
+    --secondary-foreground: 160 28% 8%;
+    --muted: 150 12% 86%;
+    --muted-foreground: 158 12% 35%;
+    --accent: 162 100% 38%;
+    --accent-foreground: 160 40% 5%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 155 10% 78%;
+    --input: 155 10% 78%;
+    --ring: 162 100% 38%;
     --radius: 14px;
-    --surface: 170 21% 5%;
-    --surface-foreground: 160 16% 96%;
+    --surface: 150 18% 96%;
+    --surface-foreground: 160 28% 8%;
+  }
+
+  /* Faixas deep: tipografia e bordas invertidas (produto digital premium) */
+  [data-tone="deep"] {
+    --color-white: #e8f2ee;
+    --color-muted: #92a8a0;
+    --color-border: rgba(232, 242, 238, 0.1);
+    --color-border-strong: rgba(232, 242, 238, 0.18);
+    --color-watermark: #e8f2ee;
+    --color-surface: #1a2924;
+    --color-surface-hover: #20312c;
+    --color-bg-soft: #1a2924;
+    --rgb-surface: 26 41 36;
+    --rgb-surface-hover: 32 49 44;
+    --rgb-bg-soft: 26 41 36;
+    --rgb-muted: 146 168 160;
+    --foreground: 150 20% 93%;
+    --muted-foreground: 155 12% 62%;
+    --border: 155 10% 22%;
+    color: var(--color-white);
+    background-color: var(--color-deep);
   }
 
   @media (min-width: 640px) {
@@ -83,7 +114,7 @@
 
   html {
     background: var(--color-bg);
-    color-scheme: dark;
+    color-scheme: light;
     -webkit-text-size-adjust: 100%;
     scroll-padding-top: calc(var(--header-h) + 16px);
   }
@@ -105,13 +136,14 @@
     letter-spacing: -0.035em;
     line-height: 1.02;
     text-wrap: balance;
+    color: var(--color-white);
   }
 
   p { text-wrap: pretty; }
 
   ::selection {
     background: var(--color-brand);
-    color: var(--color-bg);
+    color: var(--color-on-brand);
   }
 
   a, button, summary, label, [role="button"] {
@@ -183,7 +215,7 @@
     height: 6px;
     border-radius: 2px;
     background: var(--color-brand);
-    box-shadow: 0 0 12px rgba(0, 240, 168, 0.6);
+    box-shadow: 0 0 14px rgba(0, 196, 138, 0.5);
   }
 
   .display-1 {
@@ -211,12 +243,43 @@
   }
 
   .text-brand { color: var(--color-brand); }
+  .text-cyan { color: var(--color-cyan); }
   .text-soft { color: var(--color-muted); }
 
   .surface {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
+    box-shadow: 0 1px 0 rgba(15, 27, 24, 0.03), 0 20px 44px -28px rgba(15, 27, 24, 0.22);
+  }
+
+  /* Atmosfera de produto digital (heróis / seções chave) */
+  .atmosphere {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .atmosphere::before,
+  .atmosphere::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(2px);
+  }
+  .atmosphere::before {
+    top: -18%;
+    left: 35%;
+    width: min(900px, 90vw);
+    height: min(560px, 70vw);
+    background: radial-gradient(closest-side, rgba(0, 196, 138, 0.18), transparent 72%);
+  }
+  .atmosphere::after {
+    top: 18%;
+    right: -8%;
+    width: min(640px, 70vw);
+    height: min(480px, 60vw);
+    background: radial-gradient(closest-side, rgba(31, 168, 186, 0.14), transparent 70%);
   }
 
   .hairline { border-color: var(--color-border); }
@@ -246,22 +309,22 @@
 
   .btn-primary {
     background: var(--color-brand);
-    color: #03130d;
-    box-shadow: 0 0 0 0 rgba(0, 240, 168, 0);
+    color: var(--color-on-brand);
+    box-shadow: 0 0 0 0 rgba(0, 196, 138, 0);
   }
   .btn-primary:hover {
-    background: #3cf7bf;
-    box-shadow: 0 12px 40px -12px rgba(0, 240, 168, 0.55);
+    background: var(--color-brand-bright);
+    box-shadow: 0 14px 36px -14px rgba(0, 196, 138, 0.5);
   }
 
   .btn-ghost {
     color: var(--color-white);
     border: 1px solid var(--color-border-strong);
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(15, 27, 24, 0.03);
   }
   .btn-ghost:hover {
-    border-color: rgba(0, 240, 168, 0.5);
-    background: rgba(0, 240, 168, 0.06);
+    border-color: rgba(0, 196, 138, 0.55);
+    background: rgba(0, 196, 138, 0.09);
   }
 
   .btn-sm { min-height: 42px; padding: 0 18px; font-size: 14px; }
@@ -288,7 +351,9 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(0, 240, 168, 0.09), transparent 60%);
+    background:
+      radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgba(0, 196, 138, 0.12), transparent 58%),
+      radial-gradient(260px circle at calc(var(--mx, 50%) + 40px) calc(var(--my, 0%) + 30px), rgba(31, 168, 186, 0.08), transparent 55%);
     opacity: 0;
     transition: opacity 0.5s var(--ease-out);
     z-index: -1;
@@ -309,8 +374,8 @@
   /* Fundo de grade técnica */
   .bg-grid {
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      linear-gradient(to right, rgba(15, 27, 24, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 27, 24, 0.055) 1px, transparent 1px);
     background-size: 72px 72px;
   }
   .mask-fade-y {
@@ -327,7 +392,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.035;
+    opacity: 0.04;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
@@ -343,10 +408,10 @@
     font-size: 16px;
     transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
   }
-  .field::placeholder { color: rgba(142, 153, 149, 0.7); }
-  .field:hover { border-color: rgba(255, 255, 255, 0.18); }
+  .field::placeholder { color: rgba(79, 99, 92, 0.75); }
+  .field:hover { border-color: rgba(15, 27, 24, 0.24); }
   .field:focus { outline: none; border-color: var(--color-brand); background: var(--color-surface); }
-  .field[aria-invalid="true"] { border-color: #f26d6d; }
+  .field[aria-invalid="true"] { border-color: #e25555; }
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -358,12 +423,13 @@
   .tabular { font-variant-numeric: tabular-nums; }
 }
 
-@keyframes marquee {
+/* Faixa tipográfica de clientes (LogoMarquee) — ciclo em 50% porque o conteúdo é duplicado */
+@keyframes logo-marquee {
   from { transform: translate3d(0, 0, 0); }
   to { transform: translate3d(-50%, 0, 0); }
 }
-.animate-marquee { animation: marquee 60s linear infinite; }
-.marquee:hover .animate-marquee { animation-play-state: paused; }
+.animate-logo-marquee { animation: logo-marquee 60s linear infinite; }
+.marquee:hover .animate-logo-marquee { animation-play-state: paused; }
 
 @keyframes hc-sweep {
   from { clip-path: inset(0 0 0 100%); }

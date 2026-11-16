@@ -14,7 +14,7 @@ const COMPANY = [
 ];
 
 export const Footer = () => (
-  <footer className="relative overflow-hidden border-t border-line bg-ink pb-28 pt-20 md:pb-10 lg:pt-28">
+  <footer data-tone="deep" className="relative overflow-hidden border-t border-line bg-deep pb-28 pt-20 md:pb-10 lg:pt-28">
     <div className="container-x relative z-10">
       <div className="grid gap-14 lg:grid-cols-12">
         <div className="lg:col-span-5">

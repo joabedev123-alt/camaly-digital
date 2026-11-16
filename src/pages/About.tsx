@@ -69,7 +69,7 @@ const About = () => (
               ["02", "O camaleão entende o ambiente antes de mudar."],
               ["03", "Da mesma forma, antes de criar, buscamos entender o negócio."],
             ].map(([n, t]) => (
-              <StaggerItem key={n} className="flex gap-6 bg-ink p-7 sm:p-9">
+              <StaggerItem key={n} className="flex gap-6 bg-surface p-7 sm:p-9">
                 <span className="font-mono text-[12px] tracking-[0.2em] text-brand">{n}</span>
                 <p className="text-[clamp(19px,1.8vw,23px)] font-medium leading-snug tracking-tight">{t}</p>
               </StaggerItem>
@@ -104,7 +104,7 @@ const About = () => (
                   className="h-full w-full scale-[1.04] object-cover grayscale transition-all duration-[1.2s] ease-premium group-hover:scale-[1.08] group-hover:grayscale-0"
                 />
               </div>
-              <span className="absolute left-5 top-5 rounded-full border border-white/15 bg-ink/60 px-3 py-1 font-mono text-[11px] tracking-[0.18em] backdrop-blur">{m.role}</span>
+              <span className="absolute left-5 top-5 rounded-full border border-white/20 bg-black/55 px-3 py-1 font-mono text-[11px] tracking-[0.18em] text-white backdrop-blur">{m.role}</span>
             </div>
             <h3 className="mt-5 text-[22px] font-semibold tracking-tight">{m.name}</h3>
             <p className="text-[15px] text-soft">Sócio · {m.role}</p>

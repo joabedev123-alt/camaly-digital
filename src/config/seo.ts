@@ -53,15 +53,39 @@ export const caseMeta = (slug: string): PageMeta | undefined => {
   return p && { title: `${p.name} — ${p.type}`, description: `${p.summary} Case desenvolvido pela Camaly Digital.`, image: `/og/${p.slug}.jpg` };
 };
 
-/** Todas as rotas indexáveis, com seus metadados. */
-export function allRoutes(): { path: string; meta: PageMeta; priority: number }[] {
+export type SitemapGroup = "pages" | "services" | "portfolio";
+
+export interface SitemapRoute {
+  path: string;
+  meta: PageMeta;
+  priority: number;
+  changefreq: "daily" | "weekly" | "monthly" | "yearly";
+  group: SitemapGroup;
+}
+
+/** Todas as rotas indexáveis, com metadados e dados de sitemap para o Google Search Console. */
+export function allRoutes(): SitemapRoute[] {
   return [
     ...Object.entries(PAGE_SEO).map(([path, meta]) => ({
       path,
       meta,
       priority: path === "/" ? 1 : path === "/privacidade" || path === "/termos" ? 0.2 : 0.8,
+      changefreq: (path === "/" ? "weekly" : path === "/privacidade" || path === "/termos" ? "yearly" : "monthly") as SitemapRoute["changefreq"],
+      group: "pages" as const,
     })),
-    ...SERVICES.map((s) => ({ path: `/servicos/${s.slug}`, meta: serviceMeta(s.slug)!, priority: 0.9 })),
-    ...PROJECTS.map((p) => ({ path: `/portfolio/${p.slug}`, meta: caseMeta(p.slug)!, priority: 0.6 })),
+    ...SERVICES.map((s) => ({
+      path: `/servicos/${s.slug}`,
+      meta: serviceMeta(s.slug)!,
+      priority: 0.9,
+      changefreq: "monthly" as const,
+      group: "services" as const,
+    })),
+    ...PROJECTS.map((p) => ({
+      path: `/portfolio/${p.slug}`,
+      meta: caseMeta(p.slug)!,
+      priority: 0.6,
+      changefreq: "monthly" as const,
+      group: "portfolio" as const,
+    })),
   ];
 }

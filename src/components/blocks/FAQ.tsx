@@ -30,7 +30,7 @@ export const FAQ = ({ items, defaultOpen = 0 }: { items: FaqItem[]; defaultOpen?
                 <span
                   className={cn(
                     "grid h-11 w-11 shrink-0 place-items-center rounded-full border transition-all duration-500 ease-premium",
-                    isOpen ? "rotate-45 border-brand bg-brand text-ink" : "border-line text-soft group-hover:border-white/25",
+                    isOpen ? "rotate-45 border-brand bg-brand text-onbrand" : "border-line text-soft group-hover:border-foreground/20",
                   )}
                 >
                   <Icon name="plus-lg" />

@@ -56,11 +56,11 @@ export const ProjectGrid = () => {
                 onClick={() => update({ tipo: f.id === "todos" ? null : f.id, n: null })}
                 className={cn(
                   "flex min-h-11 shrink-0 snap-start items-center gap-2 rounded-full border px-4 py-2.5 text-[14px] font-medium transition-colors duration-300",
-                  active ? "border-brand bg-brand text-ink" : "border-line text-soft hover:border-white/20 hover:text-foreground",
+                  active ? "border-brand bg-brand text-onbrand" : "border-line text-soft hover:border-foreground/20 hover:text-foreground",
                 )}
               >
                 {f.label}
-                <span className={cn("tabular text-[12px]", active ? "text-ink/60" : "text-soft/60")}>{n}</span>
+                <span className={cn("tabular text-[12px]", active ? "text-onbrand/60" : "text-soft/60")}>{n}</span>
               </button>
             );
           })}

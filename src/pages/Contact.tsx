@@ -126,7 +126,7 @@ const Contact = () => {
                     <a
                       href={c.href}
                       {...(c.ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                      className="group flex items-center gap-4 bg-ink p-5 transition-colors hover:bg-surface"
+                      className="group flex items-center gap-4 bg-surface p-5 transition-colors hover:bg-surface-hover"
                     >
                       <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line text-brand">
                         <Icon name={c.icon} />
@@ -147,7 +147,7 @@ const Contact = () => {
             <div className="surface relative p-6 sm:p-10">
               {sent ? (
                 <div className="flex min-h-[520px] flex-col items-center justify-center text-center" role="status">
-                  <span className="grid h-16 w-16 place-items-center rounded-full bg-brand text-2xl text-ink">
+                  <span className="grid h-16 w-16 place-items-center rounded-full bg-brand text-2xl text-onbrand">
                     <Icon name="check-lg" />
                   </span>
                   <h2 className="mt-8 text-[28px] font-semibold tracking-tight">Projeto pronto para envio.</h2>
@@ -187,7 +187,7 @@ const Contact = () => {
                       {NEEDS.map((n) => (
                         <label key={n} className="cursor-pointer">
                           <input type="radio" name="servico" value={n} checked={f.servico === n} onChange={set("servico")} className="peer sr-only" />
-                          <span className="inline-flex rounded-full border border-white/[0.12] px-4 py-2.5 text-[14px] text-soft transition-colors peer-checked:border-brand peer-checked:bg-brand peer-checked:text-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand hover:border-white/25 hover:text-foreground">
+                          <span className="inline-flex rounded-full border border-line px-4 py-2.5 text-[14px] text-soft transition-colors peer-checked:border-brand peer-checked:bg-brand peer-checked:text-onbrand peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand hover:border-foreground/20 hover:text-foreground">
                             {n}
                           </span>
                         </label>

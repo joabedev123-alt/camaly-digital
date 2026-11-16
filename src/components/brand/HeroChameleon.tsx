@@ -95,14 +95,14 @@ export const HeroChameleon = ({ className }: { className?: string }) => {
       <svg viewBox={VB} className="block h-auto w-full overflow-visible" role="img" aria-label="Silhueta de camaleão formada por pixels e linhas — símbolo da Camaly">
         <defs>
           <radialGradient id="hc-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#00F0A8" stopOpacity="0.16" />
-            <stop offset="100%" stopColor="#00F0A8" stopOpacity="0" />
+            <stop offset="0%" stopColor="#00C48A" stopOpacity="0.16" />
+            <stop offset="100%" stopColor="#00C48A" stopOpacity="0" />
           </radialGradient>
           <pattern id="hc-grid" width="22" height="22" patternUnits="userSpaceOnUse">
-            <path d="M22 0H0V22" fill="none" stroke="#F4F7F6" strokeOpacity="0.05" strokeWidth="1" />
+            <path d="M22 0H0V22" fill="none" stroke="#0B1614" strokeOpacity="0.06" strokeWidth="1" />
           </pattern>
           <pattern id="hc-grid-in" width="22" height="22" patternUnits="userSpaceOnUse">
-            <path d="M22 0H0V22" fill="none" stroke="#00F0A8" strokeOpacity="0.16" strokeWidth="1" />
+            <path d="M22 0H0V22" fill="none" stroke="#00C48A" strokeOpacity="0.2" strokeWidth="1" />
           </pattern>
           <clipPath id="hc-clip">
             <path d={CHAMELEON_PATH} />
@@ -121,7 +121,7 @@ export const HeroChameleon = ({ className }: { className?: string }) => {
       <motion.div style={{ rotateX: rx, rotateY: ry, transformPerspective: 1200 }} className="relative">
         {/* Chip de modo — o camaleão se adapta ao tipo de produto */}
         <div className="relative z-10 mb-2 flex justify-center sm:absolute sm:left-[8%] sm:top-[2%] sm:mb-0 sm:block">
-          <div className="mx-auto flex w-full max-w-sm items-center gap-3 rounded-full border border-white/10 bg-ink/80 py-1.5 pl-1.5 pr-4 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.8)] sm:mx-0 sm:w-auto sm:max-w-none">
+          <div className="mx-auto flex w-full max-w-sm items-center gap-3 rounded-full border border-line bg-surface/95 py-1.5 pl-1.5 pr-4 shadow-[0_12px_36px_-16px_rgba(15,27,24,0.18)] sm:mx-0 sm:w-auto sm:max-w-none">
             <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary/10 text-brand">
               <Icon name={current.icon} />
             </span>
@@ -157,7 +157,7 @@ export const HeroChameleon = ({ className }: { className?: string }) => {
             style={{ animation: anim("hc-sweep 1.6s var(--ease-out) 0.45s both") }}
           >
             {PIXEL_LAYERS.map((l) => (
-              <path key={l.opacity} d={l.d} fill="#00F0A8" fillOpacity={l.opacity} />
+              <path key={l.opacity} d={l.d} fill="#00C48A" fillOpacity={l.opacity} />
             ))}
           </svg>
 
@@ -180,15 +180,15 @@ export const HeroChameleon = ({ className }: { className?: string }) => {
               d={CHAMELEON_PATH}
               pathLength={1}
               fill="none"
-              stroke="#00F0A8"
+              stroke="#00C48A"
               strokeWidth="2"
               strokeLinejoin="round"
               strokeOpacity="0.85"
               style={{ strokeDasharray: 1, strokeDashoffset: reduce ? 0 : 1, animation: anim("draw 2s var(--ease-out) 0.2s forwards") }}
             />
-            <path d={NODES_D} fill="#050807" stroke="#00F0A8" strokeWidth="1.4" style={{ opacity: reduce ? 1 : 0, animation: anim("fade-in 0.8s ease-out 1.3s forwards") }} />
-            <circle cx={CHAMELEON_EYE[0]} cy={CHAMELEON_EYE[1]} r="9" fill="none" stroke="#F4F7F6" strokeOpacity="0.9" strokeWidth="1.6" />
-            <circle cx={CHAMELEON_EYE[0]} cy={CHAMELEON_EYE[1]} r="3" fill="#F4F7F6" />
+            <path d={NODES_D} fill="var(--color-bg)" stroke="#00C48A" strokeWidth="1.4" style={{ opacity: reduce ? 1 : 0, animation: anim("fade-in 0.8s ease-out 1.3s forwards") }} />
+            <circle cx={CHAMELEON_EYE[0]} cy={CHAMELEON_EYE[1]} r="9" fill="none" stroke="#0F1B18" strokeOpacity="0.85" strokeWidth="1.6" />
+            <circle cx={CHAMELEON_EYE[0]} cy={CHAMELEON_EYE[1]} r="3" fill="#0F1B18" />
           </svg>
 
           {/* Pulso do olho em HTML (transform + opacity = compositor) */}

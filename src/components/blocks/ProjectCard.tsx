@@ -18,13 +18,13 @@ export const ProjectCard = ({ project, className, priority, compact }: { project
         decoding="async"
         className="h-full w-full object-cover object-top transition-transform duration-[1.2s] ease-premium group-hover:scale-[1.02]"
       />
-      <div className="absolute inset-0 bg-ink/0 transition-colors duration-700 ease-premium group-hover:bg-ink/55" />
+      <div className="absolute inset-0 bg-black/0 transition-colors duration-700 ease-premium group-hover:bg-black/45" />
       <div className="absolute inset-0 grid place-items-center">
-        <span className="flex translate-y-3 items-center gap-2 rounded-full border border-white/20 bg-ink/70 px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.18em] opacity-0 backdrop-blur transition-all duration-700 ease-premium group-hover:translate-y-0 group-hover:opacity-100">
+        <span className="flex translate-y-3 items-center gap-2 rounded-full border border-white/25 bg-black/65 px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.18em] text-white opacity-0 backdrop-blur transition-all duration-700 ease-premium group-hover:translate-y-0 group-hover:opacity-100">
           View project <Icon name="arrow-up-right" />
         </span>
       </div>
-      <span className="absolute left-4 top-4 rounded-full border border-white/10 bg-ink/70 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-foreground/90 backdrop-blur">
+      <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/55 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-white backdrop-blur">
         {CATEGORY_LABEL[project.category]}
       </span>
     </div>

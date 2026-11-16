@@ -147,10 +147,26 @@ export interface VideoTestimonial {
 }
 
 export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
+  // Principal: depoimento da cliente (mulher) em destaque na seção.
+  { id: "03", src: "/videos/depoimento-03.mp4", poster: "/videos/depoimento-03-poster.jpg" },
   { id: "01", src: "/videos/depoimento-01.mp4", poster: "/videos/depoimento-01-poster.jpg" },
   // O vídeo 02 mostra o site da Star Cases durante o depoimento.
   { id: "02", src: "/videos/depoimento-02.mp4", poster: "/videos/depoimento-02-poster.jpg", project: "star-cases", projectType: "Site institucional" },
-  { id: "03", src: "/videos/depoimento-03.mp4", poster: "/videos/depoimento-03-poster.jpg" },
+  // Novos depoimentos (pasta Camaly OFC / videos depoimentos — Nov/2026)
+  // 04/05/06 removidos: eram duplicatas visuais de 01/03/02
+  { id: "07", src: "/videos/depoimento-07.mp4", poster: "/videos/depoimento-07-poster.jpg" },
+  { id: "08", src: "/videos/depoimento-08.mp4", poster: "/videos/depoimento-08-poster.jpg" },
+  { id: "09", src: "/videos/depoimento-09.mp4", poster: "/videos/depoimento-09-poster.jpg" },
+  { id: "10", src: "/videos/depoimento-10.mp4", poster: "/videos/depoimento-10-poster.jpg" },
+  { id: "11", src: "/videos/depoimento-11.mp4", poster: "/videos/depoimento-11-poster.jpg" },
+  { id: "12", src: "/videos/depoimento-12.mp4", poster: "/videos/depoimento-12-poster.jpg" },
+  { id: "13", src: "/videos/depoimento-13.mp4", poster: "/videos/depoimento-13-poster.jpg" },
+  { id: "14", src: "/videos/depoimento-14.mp4", poster: "/videos/depoimento-14-poster.jpg" },
+  { id: "15", src: "/videos/depoimento-15.mp4", poster: "/videos/depoimento-15-poster.jpg" },
+  { id: "16", src: "/videos/depoimento-16.mp4", poster: "/videos/depoimento-16-poster.jpg" },
+  { id: "17", src: "/videos/depoimento-17.mp4", poster: "/videos/depoimento-17-poster.jpg" },
+  { id: "18", src: "/videos/depoimento-18.mp4", poster: "/videos/depoimento-18-poster.jpg" },
+  { id: "19", src: "/videos/depoimento-19.mp4", poster: "/videos/depoimento-19-poster.jpg" },
 ];
 
 /* ── FAQ ──────────────────────────────────────────────────────── */

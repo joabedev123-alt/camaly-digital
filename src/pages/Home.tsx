@@ -39,19 +39,19 @@ const Home = () => (
 
     {/* ═══ HERO ═══════════════════════════════════════════════ */}
     <section className="relative flex flex-col justify-start overflow-hidden lg:min-h-[100svh] lg:justify-center pb-12 pt-[calc(var(--header-h)+40px)] lg:pb-14">
-      <div aria-hidden className="absolute inset-0 bg-grid opacity-80 [mask-image:radial-gradient(ellipse_90%_70%_at_60%_10%,#000,transparent_80%)]" />
-      <div aria-hidden className="absolute -top-60 left-1/2 h-[720px] w-[1100px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(0,240,168,0.09),transparent)]" />
+      <div aria-hidden className="atmosphere" />
+      <div aria-hidden className="absolute inset-0 bg-grid opacity-70 [mask-image:radial-gradient(ellipse_90%_70%_at_60%_10%,#000,transparent_80%)]" />
 
       <div className="container-x relative z-10">
         <Reveal>
           <Eyebrow>CAMALY® — Digital Product Studio</Eyebrow>
         </Reveal>
 
-        <LineReveal as="h1" immediate fluid delay={0.1} className="mt-7 text-[clamp(40px,6vw,88px)] font-semibold leading-[0.98] tracking-[-0.045em]">
+        <LineReveal as="h1" immediate fluid delay={0.1} className="mt-7 text-[clamp(34px,8.5vw,88px)] font-semibold leading-[0.98] tracking-[-0.045em]">
           <>Transformamos ideias</>
           <>em experiências digitais</>
           <>
-            que <span className="text-brand">fazem negócios crescerem.</span>
+            que <span className="bg-gradient-to-r from-brand to-cyan bg-clip-text text-transparent">fazem negócios crescerem.</span>
           </>
         </LineReveal>
 

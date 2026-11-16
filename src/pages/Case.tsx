@@ -120,7 +120,7 @@ const Case = () => {
         <Block label="What we built" title="O que construímos">
           <Stagger as="ul" className="cells grid sm:grid-cols-2">
             {project.deliverables.map((d) => (
-              <StaggerItem as="li" key={d} className="flex items-center gap-3 bg-ink p-5 text-[16px]">
+              <StaggerItem as="li" key={d} className="flex items-center gap-3 bg-surface p-5 text-[16px]">
                 <Icon name="check2-circle" className="text-brand" /> {d}
               </StaggerItem>
             ))}
@@ -152,7 +152,7 @@ const Case = () => {
                   </div>
                   <div className="relative overflow-hidden bg-surface lg:col-span-4">
                     <img src={img.srcSm} alt="" aria-hidden width={800} height={500} loading="lazy" className="h-64 w-full scale-[2.2] object-cover [object-position:12%_6%] origin-top-left lg:h-full" />
-                    <span className="absolute bottom-4 left-4 rounded-full bg-ink/80 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-soft backdrop-blur">Close-up</span>
+                    <span className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-black/60 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white backdrop-blur">Close-up</span>
                   </div>
                 </div>
               ) : (
@@ -205,7 +205,7 @@ const Case = () => {
             <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-soft">Next project</p>
             <p className="mt-4 break-words text-[clamp(32px,5vw,72px)] font-semibold leading-none tracking-[-0.04em] transition-colors duration-500 group-hover:text-brand">{next.name}</p>
           </div>
-          <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full border border-line text-2xl transition-all duration-700 ease-premium group-hover:rotate-45 group-hover:border-brand group-hover:bg-brand group-hover:text-ink lg:h-24 lg:w-24">
+          <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full border border-line text-2xl transition-all duration-700 ease-premium group-hover:rotate-45 group-hover:border-brand group-hover:bg-brand group-hover:text-onbrand lg:h-24 lg:w-24">
             <Icon name="arrow-up-right" />
           </span>
         </Link>

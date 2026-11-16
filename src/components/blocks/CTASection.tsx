@@ -23,10 +23,10 @@ export const CTASection = ({
   waText?: string;
   secondary?: ReactNode;
 }) => (
-  <section data-cta-zone className="relative overflow-hidden border-t border-line bg-ink py-[clamp(110px,16vw,220px)] noise">
-    <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_100%,rgba(0,240,168,0.10),transparent_70%)]" />
-    <BrandWatermark variant="camaly" position="center" opacity={0.045} scale={0.95} />
-    <BrandWatermark variant="wire" position="bottom-right" opacity={0.07} scale={0.55} />
+  <section data-cta-zone data-tone="deep" className="relative overflow-hidden border-t border-line bg-deep py-[clamp(110px,16vw,220px)] noise">
+    <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_30%_100%,rgba(0,196,138,0.18),transparent_65%),radial-gradient(ellipse_45%_40%_at_80%_20%,rgba(31,168,186,0.12),transparent_60%)]" />
+    <BrandWatermark variant="camaly" position="center" opacity={0.05} scale={0.95} />
+    <BrandWatermark variant="wire" position="bottom-right" opacity={0.06} scale={0.55} />
 
     <div className="container-x relative z-10 text-center">
       <Reveal>

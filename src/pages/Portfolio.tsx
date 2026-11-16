@@ -32,11 +32,11 @@ const Portfolio = () => (
       lead={<p>Sites, lojas, landing pages, sistemas e experiências digitais construídos para empresas de diferentes mercados.</p>}
       aside={
         <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line">
-          <div className="bg-ink p-6">
+          <div className="bg-surface p-6">
             <dt className="text-[13px] text-soft">Cases publicados</dt>
             <dd className="mt-2 text-[44px] font-semibold leading-none tracking-[-0.04em]">{PROJECTS.length}</dd>
           </div>
-          <div className="bg-ink p-6">
+          <div className="bg-surface p-6">
             <dt className="text-[13px] text-soft">Segmentos</dt>
             <dd className="mt-2 text-[44px] font-semibold leading-none tracking-[-0.04em]">{INDUSTRIES.length}</dd>
           </div>

@@ -17,7 +17,7 @@ export const Section = ({
   children: ReactNode;
   className?: string;
   id?: string;
-  tone?: "base" | "soft" | "surface";
+  tone?: "base" | "soft" | "surface" | "deep";
   /** Remove o container interno (para layouts full-bleed). */
   bleed?: boolean;
   labelledBy?: string;
@@ -25,10 +25,12 @@ export const Section = ({
   <section
     id={id}
     aria-labelledby={labelledBy}
+    data-tone={tone === "deep" ? "deep" : undefined}
     className={cn(
       "section overflow-hidden",
       tone === "soft" && "bg-ink-soft",
       tone === "surface" && "bg-surface",
+      tone === "deep" && "bg-deep",
       className,
     )}
   >

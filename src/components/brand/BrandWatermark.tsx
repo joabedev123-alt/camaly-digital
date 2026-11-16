@@ -48,7 +48,7 @@ export const BrandWatermark = ({ variant = "camaly", position = "center", opacit
             y="82"
             textAnchor="middle"
             fill="none"
-            stroke="#F4F7F6"
+            stroke="var(--color-watermark)"
             strokeWidth="0.6"
             style={{ font: "600 100px var(--font-heading)", letterSpacing: "-0.04em" }}
           >
@@ -70,13 +70,13 @@ export const BrandWatermark = ({ variant = "camaly", position = "center", opacit
       <svg viewBox={`-20 -20 ${w + 40} ${h + 40}`} className="block w-full h-auto overflow-visible">
         <defs>
           <pattern id={`dots-${uid}`} width="14" height="14" patternUnits="userSpaceOnUse">
-            <circle cx="2" cy="2" r="1.6" fill="#F4F7F6" />
+            <circle cx="2" cy="2" r="1.6" fill="var(--color-watermark)" />
           </pattern>
         </defs>
         {variant === "chameleon" ? (
           <>
             <path d={CHAMELEON_PATH} fill={`url(#dots-${uid})`} />
-            <path d={CHAMELEON_PATH} fill="none" stroke="#F4F7F6" strokeWidth="1.5" strokeLinejoin="round" />
+            <path d={CHAMELEON_PATH} fill="none" stroke="var(--color-watermark)" strokeWidth="1.5" strokeLinejoin="round" />
           </>
         ) : (
           // WIRE — contornos concêntricos, como curvas de nível
@@ -85,7 +85,7 @@ export const BrandWatermark = ({ variant = "camaly", position = "center", opacit
               key={s}
               d={CHAMELEON_PATH}
               fill="none"
-              stroke="#F4F7F6"
+              stroke="var(--color-watermark)"
               strokeWidth={1.4 / s}
               strokeLinejoin="round"
               opacity={1 - i * 0.13}

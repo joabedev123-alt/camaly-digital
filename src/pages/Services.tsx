@@ -32,7 +32,7 @@ const Services = () => (
     />
 
     {/* Índice rápido */}
-    <nav aria-label="Serviços" className="sticky top-[var(--header-h)] z-30 border-y border-line bg-ink/85 backdrop-blur-xl">
+    <nav aria-label="Serviços" className="sticky top-[var(--header-h)] z-30 border-y border-line bg-surface/90 backdrop-blur-xl">
       <ul className="container-x flex snap-x snap-mandatory gap-2 overflow-x-auto overscroll-x-contain py-3 scrollbar-hide lg:snap-none">
         {SERVICES.map((s) => (
           <li key={s.slug} className="shrink-0 snap-start">
@@ -93,7 +93,7 @@ const Services = () => (
               </Reveal>
               <Stagger className="mt-5 cells grid sm:grid-cols-2">
                 {s.deliverables.items.slice(0, 6).map((d) => (
-                  <StaggerItem key={d.title} className="bg-ink p-6">
+                  <StaggerItem key={d.title} className="bg-surface p-6">
                     <Icon name={d.icon} className="text-lg text-brand" />
                     <h3 className="mt-4 font-semibold tracking-tight">{d.title}</h3>
                     <p className="mt-1.5 text-[14.5px] text-soft">{d.text}</p>

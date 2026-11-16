@@ -47,7 +47,7 @@ export const MobileMenu = ({ open, onClose }: { open: boolean; onClose: () => vo
               ref={closeRef}
               type="button"
               onClick={onClose}
-              className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/[0.03]"
+              className="grid h-11 w-11 place-items-center rounded-full border border-line bg-ink-soft"
               aria-label="Fechar menu"
             >
               <Icon name="x-lg" className="text-lg" />
@@ -70,7 +70,7 @@ export const MobileMenu = ({ open, onClose }: { open: boolean; onClose: () => vo
                         type="button"
                         onClick={() => setServicesOpen((v) => !v)}
                         aria-expanded={servicesOpen}
-                        className="flex w-full items-center justify-between py-5 text-[30px] font-semibold tracking-tight"
+                        className="flex w-full items-center justify-between py-4 text-[26px] font-semibold tracking-tight sm:py-5 sm:text-[30px]"
                       >
                         {item.label}
                         <Icon name="plus-lg" className={`text-xl text-soft transition-transform duration-500 ease-premium ${servicesOpen ? "rotate-45" : ""}`} />
@@ -102,7 +102,7 @@ export const MobileMenu = ({ open, onClose }: { open: boolean; onClose: () => vo
                       </AnimatePresence>
                     </>
                   ) : (
-                    <Link to={item.to} onClick={onClose} className="flex items-center justify-between py-5 text-[30px] font-semibold tracking-tight">
+                    <Link to={item.to} onClick={onClose} className="flex items-center justify-between py-4 text-[26px] font-semibold tracking-tight sm:py-5 sm:text-[30px]">
                       {item.label}
                       <Icon name="arrow-up-right" className="text-lg text-soft" />
                     </Link>

@@ -119,7 +119,7 @@ const ServiceDetail = () => {
           ))}
         </Stagger>
         {service.disclaimer && (
-          <Reveal className="mt-8 flex items-start gap-3 rounded-md border border-line bg-ink p-5 text-[15px] text-soft">
+          <Reveal className="mt-8 flex items-start gap-3 rounded-md border border-line bg-surface p-5 text-[15px] text-soft">
             <Icon name="info-circle" className="mt-0.5 text-brand" />
             {service.disclaimer}
           </Reveal>
@@ -192,7 +192,7 @@ const ServiceDetail = () => {
       <section aria-label="Outros serviços" className="border-t border-line py-14">
         <div className="container-x grid gap-3 sm:grid-cols-3">
           {others.map((s) => (
-            <Link key={s.slug} to={`/servicos/${s.slug}`} className="group flex items-center justify-between rounded-md border border-line p-5 transition-colors hover:border-white/20 hover:bg-surface">
+            <Link key={s.slug} to={`/servicos/${s.slug}`} className="group flex items-center justify-between rounded-md border border-line p-5 transition-colors hover:border-brand/30 hover:bg-surface">
               <span className="flex items-center gap-3">
                 <Icon name={s.icon} className="text-brand" />
                 <span className="font-medium">{s.name}</span>
