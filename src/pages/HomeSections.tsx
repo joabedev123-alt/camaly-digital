@@ -24,21 +24,21 @@ import { CAMALY_WAY_FLOW, FAQ_HOME, PILLARS, PROCESS_HOME } from "@/data/content
 const BLOCKS = [
   <Fragment key="projetos">
     {/* ═══ SELECTED WORK ══════════════════════════════════════ */}
-    <Section tone="soft" id="projetos" labelledBy="work-title" className="!py-[clamp(64px,9vw,110px)]">
+    <Section tone="soft" id="projetos" labelledBy="work-title" className="!py-[clamp(48px,8vw,100px)]">
       <HomeProjects />
     </Section>
   </Fragment>,
 
   <Fragment key="depoimentos">
     {/* ═══ DEPOIMENTOS ════════════════════════════════════════ */}
-    <Section labelledBy="test-title" className="!py-[clamp(72px,10vw,120px)]">
+    <Section labelledBy="test-title" className="!py-[clamp(48px,8vw,100px)]">
       <SectionHeader
         id="test-title"
         align="split"
         eyebrow="Depoimentos"
         title={["Quem trabalha com a Camaly", "entende a diferença."]}
       />
-      <div className="mt-12 lg:mt-14">
+      <div className="mt-8 sm:mt-12 lg:mt-14">
         <Testimonials />
       </div>
     </Section>
@@ -46,9 +46,9 @@ const BLOCKS = [
 
   <Fragment key="servicos">
     {/* ═══ SERVIÇOS ═══════════════════════════════════════════ */}
-    <Section tone="soft" id="servicos" labelledBy="servicos-title" className="!py-[clamp(72px,10vw,120px)]">
+    <Section tone="soft" id="servicos" labelledBy="servicos-title" className="!py-[clamp(48px,8vw,100px)]">
       <SectionHeader id="servicos-title" align="split" eyebrow="What we build" title={["Uma solução digital", "para cada desafio."]} />
-      <Stagger className="mt-14 grid gap-4 md:grid-cols-2 lg:mt-16 lg:gap-5">
+      <Stagger className="mt-10 grid gap-3 sm:mt-14 sm:gap-4 md:grid-cols-2 lg:mt-16 lg:gap-5">
         {SERVICES.map((s, i) => (
           <StaggerItem key={s.slug}>
             <ServiceCard service={s} index={i} />
@@ -60,7 +60,7 @@ const BLOCKS = [
 
   <Fragment key="camaly-way">
     {/* ═══ THE CAMALY WAY ═════════════════════════════════════ */}
-    <section aria-labelledby="way-title" className="relative overflow-hidden py-[clamp(72px,10vw,120px)]">
+    <section aria-labelledby="way-title" className="relative overflow-hidden py-[clamp(48px,8vw,100px)]">
       <BrandWatermark variant="chameleon" position="right" opacity={0.07} scale={0.95} />
       <BrandWatermark variant="wire" position="bottom-left" opacity={0.05} scale={0.5} />
       <div aria-hidden className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_70%_60%_at_30%_40%,#000,transparent_75%)]" />
@@ -116,9 +116,9 @@ const BLOCKS = [
 
   <Fragment key="resultados">
     {/* ═══ RESULTADOS ═════════════════════════════════════════ */}
-    <Section tone="soft" labelledBy="results-title" className="!py-[clamp(72px,10vw,120px)]">
+    <Section tone="soft" labelledBy="results-title" className="!py-[clamp(48px,8vw,100px)]">
       <SectionHeader id="results-title" eyebrow="Results" title={["Bonito chama atenção.", <span className="text-soft">Resultado constrói negócios.</span>]} />
-      <div className="mt-12 lg:mt-14">
+      <div className="mt-8 sm:mt-12 lg:mt-14">
         <Metrics />
       </div>
       <Reveal className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-2 text-[14px] text-soft sm:text-[15px]">
@@ -135,7 +135,7 @@ const BLOCKS = [
 
   <Fragment key="processo">
     {/* ═══ PROCESSO RESUMIDO ══════════════════════════════════ */}
-    <Section labelledBy="process-title" className="!py-[clamp(72px,10vw,120px)]">
+    <Section labelledBy="process-title" className="!py-[clamp(48px,8vw,100px)]">
       <SectionHeader
         id="process-title"
         align="split"
@@ -147,7 +147,7 @@ const BLOCKS = [
           </ButtonLink>
         }
       />
-      <div className="mt-14 lg:mt-16">
+      <div className="mt-10 sm:mt-14 lg:mt-16">
         <ProcessTimeline steps={PROCESS_HOME} />
       </div>
     </Section>
@@ -155,8 +155,8 @@ const BLOCKS = [
 
   <Fragment key="faq">
     {/* ═══ FAQ ════════════════════════════════════════════════ */}
-    <Section tone="soft" labelledBy="faq-title" className="!py-[clamp(72px,10vw,120px)]">
-      <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+    <Section tone="soft" labelledBy="faq-title" className="!py-[clamp(48px,8vw,100px)]">
+      <div className="grid gap-8 lg:grid-cols-12 lg:gap-14">
         <div className="lg:col-span-4">
           <SectionHeader id="faq-title" eyebrow="Dúvidas" title={["Ainda está", "em dúvida?"]} size="2" />
           <Reveal delay={0.15} className="mt-6">

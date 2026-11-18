@@ -35,9 +35,9 @@ const Home = () => (
     <Seo {...PAGE_SEO["/"]} jsonLd={orgLd} />
 
     {/* ═══ HERO ═══════════════════════════════════════════════ */}
-    <section className="relative flex flex-col justify-start overflow-hidden lg:min-h-[100svh] lg:justify-center pb-8 pt-[calc(var(--header-h)+28px)] sm:pb-10 sm:pt-[calc(var(--header-h)+36px)] lg:pb-12">
+    <section className="relative flex flex-col justify-start overflow-hidden pb-8 pt-[calc(var(--header-h)+28px)] sm:pb-10 sm:pt-[calc(var(--header-h)+36px)] lg:min-h-[100svh] lg:justify-center lg:pb-12">
       <div aria-hidden className="atmosphere max-md:opacity-70" />
-      <div aria-hidden className="absolute inset-0 bg-grid opacity-50 sm:opacity-70 [mask-image:radial-gradient(ellipse_90%_70%_at_60%_10%,#000,transparent_80%)]" />
+      <div aria-hidden className="absolute inset-0 bg-grid opacity-50 [mask-image:radial-gradient(ellipse_90%_70%_at_60%_10%,#000,transparent_80%)] sm:opacity-70" />
 
       <div className="container-x relative z-10">
         <Reveal>
@@ -53,7 +53,7 @@ const Home = () => (
         </LineReveal>
 
         <div className="mt-8 grid items-center gap-8 lg:mt-8 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-5">
+          <div className="order-2 lg:order-1 lg:col-span-5">
             <Reveal delay={0.35}>
               <p className="lead max-w-lg text-[16px] sm:text-[17px] md:text-[18px]">
                 Sites, lojas, landing pages e plataformas desenvolvidos para transformar presença digital em resultado.
@@ -69,8 +69,8 @@ const Home = () => (
             </Reveal>
           </div>
 
-          <Reveal delay={0.25} className="lg:col-span-7">
-            <HeroChameleon className="mx-auto w-full max-w-[760px] lg:-mr-8 lg:ml-auto" />
+          <Reveal delay={0.25} className="order-1 lg:order-2 lg:col-span-7">
+            <HeroChameleon className="mx-auto w-full max-w-[560px] sm:max-w-[680px] lg:-mr-8 lg:ml-auto lg:max-w-[760px]" />
           </Reveal>
         </div>
       </div>
@@ -81,7 +81,7 @@ const Home = () => (
       <LogoMarquee />
     </section>
 
-    <Suspense fallback={<div className="min-h-[120vh] md:min-h-[200vh]" aria-hidden />}>
+    <Suspense fallback={<div className="min-h-[80vh] md:min-h-[160vh]" aria-hidden />}>
       <HomeSections />
     </Suspense>
   </>

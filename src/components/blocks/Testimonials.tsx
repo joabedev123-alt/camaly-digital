@@ -110,7 +110,7 @@ export const Testimonials = () => {
         pauseOnHover
         reverse={i % 2 === 1}
         repeat={repeat}
-        className="h-full min-h-0 p-0 [--duration:48s] [--gap:0.55rem] sm:[--duration:46s] sm:[--gap:0.85rem]"
+        className="h-full min-h-0 p-0 [--duration:44s] [--gap:0.55rem] sm:[--duration:46s] sm:[--gap:0.85rem]"
         ariaLabel={`Fileira vertical de depoimentos ${i + 1}`}
       >
         {col.map((t) => (

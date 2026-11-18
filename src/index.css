@@ -281,6 +281,23 @@
     height: min(480px, 60vw);
     background: radial-gradient(closest-side, rgba(31, 168, 186, 0.14), transparent 70%);
   }
+  @media (max-width: 767px) {
+    .atmosphere::before,
+    .atmosphere::after {
+      filter: blur(1px);
+      opacity: 0.85;
+    }
+    .lead {
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    .display-1 {
+      font-size: clamp(32px, 9vw, 64px);
+    }
+    .display-2 {
+      font-size: clamp(28px, 7.2vw, 48px);
+    }
+  }
 
   .hairline { border-color: var(--color-border); }
 
