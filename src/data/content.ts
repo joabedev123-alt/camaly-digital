@@ -80,11 +80,47 @@ export const PROCESS_FULL: ProcessPhase[] = [
   },
 ];
 
-/** Versão resumida (6 etapas) usada na Home. */
+/** Versão resumida (6 etapas) — disponível para outras superfícies. */
 export const PROCESS_SHORT = ["01", "02", "04", "05", "07", "08"].map((n, i) => {
   const p = PROCESS_FULL.find((x) => x.n === n)!;
   return { ...p, n: String(i + 1).padStart(2, "0") };
 });
+
+/** Três macroetapas para a Home (detalhe completo permanece em /processo). */
+export const PROCESS_HOME: ProcessPhase[] = [
+  {
+    n: "01",
+    icon: "compass",
+    title: "Entendemos",
+    short: "Negócio, público e objetivo.",
+    text: PROCESS_FULL[0].text,
+    outputs: PROCESS_FULL[0].outputs,
+  },
+  {
+    n: "02",
+    icon: "palette",
+    title: "Criamos",
+    short: "Estratégia, design e desenvolvimento.",
+    text: "Transformamos o diagnóstico em direção visual e técnica — da mensagem ao código.",
+    outputs: ["Estratégia e UX", "Design", "Desenvolvimento"],
+  },
+  {
+    n: "03",
+    icon: "rocket-takeoff",
+    title: "Publicamos",
+    short: "Testamos, refinamos e colocamos o projeto no ar.",
+    text: PROCESS_FULL[7].text,
+    outputs: PROCESS_FULL[7].outputs,
+  },
+];
+
+/** Fluxo visual da Camaly Way (Home). */
+export const CAMALY_WAY_FLOW = [
+  { icon: "search", label: "Entender" },
+  { icon: "shuffle", label: "Adaptar" },
+  { icon: "hammer", label: "Construir" },
+  { icon: "arrow-repeat", label: "Evoluir" },
+] as const;
 
 export const CLIENT_NEEDS = [
   { icon: "journal-text", title: "Briefing", text: "Uma conversa inicial sobre a empresa, os objetivos e as referências." },
@@ -215,4 +251,17 @@ export const FAQ: FaqItem[] = [
     q: "Como falo com a Camaly?",
     a: `O atendimento é feito diretamente pelo WhatsApp (${CONTACT.whatsappDisplay}). Você também pode usar o formulário da página de contato ou o e-mail ${CONTACT.email}.`,
   },
+];
+
+/** FAQ curto da Home — perguntas de conversão (conteúdo real, respostas resumidas). */
+export const FAQ_HOME: FaqItem[] = [
+  {
+    q: "Vocês desenvolvem somente sites?",
+    a: "Não. Desenvolvemos sites institucionais, landing pages, lojas virtuais e sistemas e plataformas personalizadas.",
+  },
+  FAQ.find((f) => f.q.includes("lojas virtuais"))!,
+  FAQ.find((f) => f.q.includes("sistemas"))!,
+  FAQ.find((f) => f.q.includes("celular"))!,
+  { q: "Quanto tempo leva para desenvolver um projeto?", a: SCOPE },
+  FAQ.find((f) => f.q.includes("Como falo"))!,
 ];

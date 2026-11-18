@@ -5,18 +5,27 @@ import { Reveal } from "@/components/system/Reveal";
 import type { ProcessPhase } from "@/data/content";
 
 /** Linha do tempo horizontal (desktop) / vertical (mobile) — versão resumida. */
-export const ProcessTimeline = ({ steps }: { steps: ProcessPhase[] }) => (
-  <ol className="relative grid gap-0 md:grid-cols-3 lg:grid-cols-6">
-    {steps.map((s, i) => (
-      <Reveal as="li" key={s.n} delay={i * 0.07} className="group relative border-l border-line pb-10 pl-8 md:border-l-0 md:border-t md:pb-0 md:pl-0 md:pr-6 md:pt-8">
-        <span className="absolute -left-[5px] top-1 h-[9px] w-[9px] rounded-full border border-brand bg-surface transition-colors duration-500 group-hover:bg-brand md:-top-[5px] md:left-0" />
-        <span className="font-mono text-[12px] tracking-[0.2em] text-brand">{s.n}</span>
-        <h3 className="mt-3 text-[19px] font-semibold uppercase tracking-tight">{s.title}</h3>
-        <p className="mt-3 text-[15px] leading-relaxed text-soft">{s.short}</p>
-      </Reveal>
-    ))}
-  </ol>
-);
+export const ProcessTimeline = ({ steps }: { steps: ProcessPhase[] }) => {
+  const cols =
+    steps.length <= 3
+      ? "md:grid-cols-3"
+      : steps.length <= 4
+        ? "md:grid-cols-2 lg:grid-cols-4"
+        : "md:grid-cols-3 lg:grid-cols-6";
+
+  return (
+    <ol className={`relative grid gap-0 ${cols}`}>
+      {steps.map((s, i) => (
+        <Reveal as="li" key={s.n} delay={i * 0.07} className="group relative border-l border-line pb-10 pl-8 md:border-l-0 md:border-t md:pb-0 md:pl-0 md:pr-6 md:pt-8">
+          <span className="absolute -left-[5px] top-1 h-[9px] w-[9px] rounded-full border border-brand bg-surface transition-colors duration-500 group-hover:bg-brand md:-top-[5px] md:left-0" />
+          <span className="font-mono text-[12px] tracking-[0.2em] text-brand">{s.n}</span>
+          <h3 className="mt-3 text-[19px] font-semibold uppercase tracking-tight">{s.title}</h3>
+          <p className="mt-3 text-[15px] leading-relaxed text-soft">{s.short}</p>
+        </Reveal>
+      ))}
+    </ol>
+  );
+};
 
 /** Processo detalhado em fases — com progresso vinculado ao scroll. */
 export const ProcessPhases = ({ phases }: { phases: ProcessPhase[] }) => {

@@ -102,15 +102,15 @@ export const Testimonials = () => {
   const colsMobile = useMemo(() => splitColumns(VIDEO_TESTIMONIALS, 2), []);
   const colsDesktop = useMemo(() => splitColumns(VIDEO_TESTIMONIALS, 3), []);
 
-  const renderCols = (cols: VideoTestimonial[][]) =>
+  const renderCols = (cols: VideoTestimonial[][], repeat: number) =>
     cols.map((col, i) => (
       <Marquee
         key={i}
         vertical
         pauseOnHover
         reverse={i % 2 === 1}
-        repeat={3}
-        className="h-full min-h-0 p-0 [--duration:40s] [--gap:0.65rem] sm:[--duration:46s] sm:[--gap:0.85rem]"
+        repeat={repeat}
+        className="h-full min-h-0 p-0 [--duration:48s] [--gap:0.55rem] sm:[--duration:46s] sm:[--gap:0.85rem]"
         ariaLabel={`Fileira vertical de depoimentos ${i + 1}`}
       >
         {col.map((t) => (
@@ -121,11 +121,11 @@ export const Testimonials = () => {
 
   return (
     <>
-      <div className="relative h-[26rem] overflow-hidden rounded-xl border border-line bg-surface/80 xs:h-[28rem] sm:h-[34rem] md:h-[36rem]">
-        {/* Mobile / tablet fino: 2 fileiras */}
-        <div className="grid h-full grid-cols-2 gap-2 px-2 py-2.5 md:hidden">{renderCols(colsMobile)}</div>
+      <div className="relative h-[22rem] overflow-hidden rounded-xl border border-line bg-surface/80 [content-visibility:auto] sm:h-[32rem] md:h-[36rem]">
+        {/* Mobile: 2 fileiras, menos cópias no marquee */}
+        <div className="grid h-full grid-cols-2 gap-1.5 px-1.5 py-2 md:hidden">{renderCols(colsMobile, 2)}</div>
         {/* Desktop: 3 fileiras */}
-        <div className="hidden h-full grid-cols-3 gap-4 px-4 py-4 md:grid">{renderCols(colsDesktop)}</div>
+        <div className="hidden h-full grid-cols-3 gap-4 px-4 py-4 md:grid">{renderCols(colsDesktop, 3)}</div>
 
         <div className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-surface sm:h-16 md:h-20" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-surface sm:h-16 md:h-20" />

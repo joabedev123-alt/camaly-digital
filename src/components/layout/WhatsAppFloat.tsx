@@ -76,9 +76,10 @@ export const WhatsAppFloat = () => {
             <span className="pointer-events-none mr-3 translate-x-2 rounded-full border border-line bg-surface/95 px-4 py-2 text-[13px] font-medium opacity-0 shadow-xl backdrop-blur transition-all duration-500 ease-premium group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100">
               Fale com a Camaly
             </span>
-            <span className="relative grid h-14 w-14 place-items-center rounded-full border border-primary/30 bg-surface text-brand shadow-[0_12px_36px_-10px_rgba(0,196,138,0.45)] transition-colors duration-500 group-hover:bg-brand group-hover:text-onbrand">
-              <span className="absolute inset-0 rounded-full border border-primary/40 animate-ping [animation-duration:2.8s]" aria-hidden />
-              <Icon name="whatsapp" className="text-[22px]" />
+            <span className="wa-float relative grid h-14 w-14 place-items-center rounded-full text-white shadow-[0_10px_28px_-8px_rgba(37,211,102,0.65)] transition-transform duration-500 ease-premium group-hover:scale-105 group-active:scale-95">
+              <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30 [animation-duration:2.4s]" aria-hidden />
+              <span className="absolute inset-0 rounded-full bg-[#25D366]" aria-hidden />
+              <Icon name="whatsapp" className="relative z-[1] text-[24px] text-white" />
             </span>
           </motion.a>
         )}
@@ -95,8 +96,13 @@ export const WhatsAppFloat = () => {
             className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-ink/90 px-4 pt-3 backdrop-blur-xl md:hidden"
             style={{ paddingBottom: "max(12px, env(safe-area-inset-bottom))" }}
           >
-            <a href={href} target="_blank" rel="noopener noreferrer" className="btn btn-primary w-full">
-              <Icon name="whatsapp" />
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn w-full bg-[#25D366] text-white shadow-[0_12px_28px_-12px_rgba(37,211,102,0.7)] hover:bg-[#20bd5a] hover:shadow-[0_16px_36px_-12px_rgba(37,211,102,0.75)]"
+            >
+              <Icon name="whatsapp" className="text-white" />
               <span>Falar sobre meu projeto</span>
             </a>
           </motion.div>

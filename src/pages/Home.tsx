@@ -32,22 +32,19 @@ const orgLd = [
 
 const Home = () => (
   <>
-    <Seo
-      {...PAGE_SEO["/"]}
-      jsonLd={orgLd}
-    />
+    <Seo {...PAGE_SEO["/"]} jsonLd={orgLd} />
 
     {/* ═══ HERO ═══════════════════════════════════════════════ */}
-    <section className="relative flex flex-col justify-start overflow-hidden lg:min-h-[100svh] lg:justify-center pb-12 pt-[calc(var(--header-h)+40px)] lg:pb-14">
-      <div aria-hidden className="atmosphere" />
-      <div aria-hidden className="absolute inset-0 bg-grid opacity-70 [mask-image:radial-gradient(ellipse_90%_70%_at_60%_10%,#000,transparent_80%)]" />
+    <section className="relative flex flex-col justify-start overflow-hidden lg:min-h-[100svh] lg:justify-center pb-8 pt-[calc(var(--header-h)+28px)] sm:pb-10 sm:pt-[calc(var(--header-h)+36px)] lg:pb-12">
+      <div aria-hidden className="atmosphere max-md:opacity-70" />
+      <div aria-hidden className="absolute inset-0 bg-grid opacity-50 sm:opacity-70 [mask-image:radial-gradient(ellipse_90%_70%_at_60%_10%,#000,transparent_80%)]" />
 
       <div className="container-x relative z-10">
         <Reveal>
           <Eyebrow>CAMALY® — Digital Product Studio</Eyebrow>
         </Reveal>
 
-        <LineReveal as="h1" immediate fluid delay={0.1} className="mt-7 text-[clamp(34px,8.5vw,88px)] font-semibold leading-[0.98] tracking-[-0.045em]">
+        <LineReveal as="h1" immediate fluid delay={0.1} className="mt-5 text-[clamp(30px,8.2vw,88px)] font-semibold leading-[0.98] tracking-[-0.045em] sm:mt-7">
           <>Transformamos ideias</>
           <>em experiências digitais</>
           <>
@@ -55,39 +52,32 @@ const Home = () => (
           </>
         </LineReveal>
 
-        <div className="mt-10 grid items-center gap-12 lg:mt-10 lg:grid-cols-12 lg:gap-10">
+        <div className="mt-8 grid items-center gap-8 lg:mt-8 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
             <Reveal delay={0.35}>
-              <p className="lead max-w-xl">
-                Criamos sites, landing pages, lojas virtuais, sistemas e plataformas digitais que unem estratégia, design e tecnologia para transformar presença
-                digital em oportunidade de negócio.
+              <p className="lead max-w-lg text-[16px] sm:text-[17px] md:text-[18px]">
+                Sites, lojas, landing pages e plataformas desenvolvidos para transformar presença digital em resultado.
               </p>
             </Reveal>
-            <Reveal delay={0.45} className="mt-9 flex flex-col gap-5 sm:flex-row sm:items-center">
-              <WhatsAppButton size="lg" context="home">
+            <Reveal delay={0.45} className="mt-7 flex flex-col gap-4 sm:mt-9 sm:flex-row sm:items-center sm:gap-5">
+              <WhatsAppButton size="lg" context="home" className="w-full sm:w-auto">
                 Quero criar meu projeto
               </WhatsAppButton>
-              <a href="#projetos" className="link-arrow justify-center sm:justify-start">
-                Explorar projetos <Icon name="arrow-down" />
+              <a href="#projetos" className="link-arrow min-h-11 justify-center sm:justify-start">
+                Ver nossos trabalhos <Icon name="arrow-down" />
               </a>
-            </Reveal>
-            <Reveal delay={0.55}>
-              <p className="mt-8 max-w-md font-mono text-[10px] uppercase leading-relaxed tracking-[0.2em] text-soft text-pretty sm:text-[11px]">Sites • E-commerce • Landing Pages • Sistemas • Plataformas</p>
             </Reveal>
           </div>
 
           <Reveal delay={0.25} className="lg:col-span-7">
-            <HeroChameleon className="mx-auto w-full max-w-[720px] lg:-mr-6 lg:ml-auto" />
+            <HeroChameleon className="mx-auto w-full max-w-[760px] lg:-mr-8 lg:ml-auto" />
           </Reveal>
         </div>
       </div>
     </section>
 
-    {/* ═══ TRUST BAR ══════════════════════════════════════════ */}
-    <section aria-label="Clientes" className="border-y border-line bg-ink-soft py-10">
-      <p className="container-x mb-8 text-center text-[12px] uppercase tracking-[0.22em] text-soft">
-        Projetos desenvolvidos para negócios de diferentes mercados
-      </p>
+    {/* ═══ TRUST BAR (visual) ═════════════════════════════════ */}
+    <section aria-label="Clientes" className="border-y border-line bg-ink-soft py-6 sm:py-8">
       <LogoMarquee />
     </section>
 

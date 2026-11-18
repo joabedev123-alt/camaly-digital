@@ -11,7 +11,18 @@ import { DeviceMockup } from "./DeviceMockup";
  * Projeto em destaque, grande. Layouts alternados:
  * imagem à esquerda, à direita ou largura total.
  */
-export const ProjectShowcase = ({ project, index, layout }: { project: Project; index: number; layout: "left" | "right" | "full" }) => {
+export const ProjectShowcase = ({
+  project,
+  index,
+  layout,
+  compact = false,
+}: {
+  project: Project;
+  index: number;
+  layout: "left" | "right" | "full";
+  /** Home: só nome, tipo/segmento e CTA — detalhe fica no case. */
+  compact?: boolean;
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -29,6 +40,10 @@ export const ProjectShowcase = ({ project, index, layout }: { project: Project; 
     </motion.div>
   );
 
+  const meta = compact
+    ? [project.type, project.industry].filter(Boolean).join(" • ")
+    : project.type;
+
   const info = (
     <Reveal className={cn("flex flex-col", layout === "full" ? "lg:flex-row lg:items-end lg:justify-between gap-8" : "justify-center")}>
       <div>
@@ -36,13 +51,13 @@ export const ProjectShowcase = ({ project, index, layout }: { project: Project; 
           Camaly / Project {String(index + 1).padStart(2, "0")}
         </p>
         <h3 className="mt-5 text-[clamp(32px,4.2vw,56px)] font-semibold leading-[1.02] tracking-[-0.04em]">{project.name}</h3>
-        <p className="mt-3 text-[17px] text-brand">{project.type}</p>
-        <p className="mt-5 max-w-md text-[17px] leading-relaxed text-soft">{project.summary}</p>
+        <p className="mt-3 text-[16px] text-brand sm:text-[17px]">{meta}</p>
+        {!compact && <p className="mt-5 max-w-md text-[17px] leading-relaxed text-soft">{project.summary}</p>}
       </div>
       <div className={cn(layout !== "full" && "mt-8")}>
-        <p className="text-[13px] uppercase tracking-[0.16em] text-soft/80">{project.services.join(" • ")}</p>
+        {!compact && <p className="text-[13px] uppercase tracking-[0.16em] text-soft/80">{project.services.join(" • ")}</p>}
         <Link to={`/portfolio/${project.slug}`} className="btn btn-ghost mt-6">
-          Ver case <Icon name="arrow-up-right" />
+          Ver projeto <Icon name="arrow-up-right" />
         </Link>
       </div>
     </Reveal>
